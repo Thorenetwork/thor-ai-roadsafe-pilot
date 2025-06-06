@@ -9,6 +9,7 @@ interface MetricCardProps {
   changeType?: 'positive' | 'negative' | 'neutral';
   icon: LucideIcon;
   description?: string;
+  trend?: 'up' | 'down' | 'neutral';
 }
 
 const MetricCard: React.FC<MetricCardProps> = ({
@@ -17,13 +18,19 @@ const MetricCard: React.FC<MetricCardProps> = ({
   change,
   changeType = 'neutral',
   icon: Icon,
-  description
+  description,
+  trend = 'neutral'
 }) => {
   const changeColors = {
     positive: 'text-green-600 bg-green-50',
     negative: 'text-red-600 bg-red-50',
     neutral: 'text-gray-600 bg-gray-50'
   };
+
+  // Determine changeType based on trend if not explicitly provided
+  const finalChangeType = changeType !== 'neutral' ? changeType : 
+    trend === 'up' ? 'positive' : 
+    trend === 'down' ? 'negative' : 'neutral';
 
   return (
     <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300">
@@ -38,7 +45,7 @@ const MetricCard: React.FC<MetricCardProps> = ({
           </div>
         </div>
         {change && (
-          <div className={`px-3 py-1 rounded-full text-sm font-medium ${changeColors[changeType]}`}>
+          <div className={`px-3 py-1 rounded-full text-sm font-medium ${changeColors[finalChangeType]}`}>
             {change}
           </div>
         )}

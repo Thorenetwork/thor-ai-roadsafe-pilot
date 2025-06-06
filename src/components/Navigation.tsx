@@ -12,12 +12,12 @@ import {
 
 const Navigation = () => {
   const navItems = [
-    { to: '/', icon: Activity, label: 'डैशबोर्ड', end: true },
-    { to: '/monitoring', icon: Map, label: 'लाइव मॉनिटरिंग' },
-    { to: '/emergency', icon: AlertTriangle, label: 'आपातकालीन प्रतिक्रिया' },
-    { to: '/analytics', icon: Brain, label: 'AI एनालिटिक्स' },
-    { to: '/reports', icon: BarChart3, label: 'सुरक्षा रिपोर्ट' },
-    { to: '/settings', icon: Settings, label: 'सेटिंग्स' }
+    { to: '/', icon: Activity, label: 'डॅशबोर्ड', end: true },
+    { to: '/monitoring', icon: Map, label: 'थेट निरीक्षण' },
+    { to: '/emergency', icon: AlertTriangle, label: 'आपत्कालीन प्रतिसाद' },
+    { to: '/analytics', icon: Brain, label: 'AI विश्लेषण' },
+    { to: '/reports', icon: BarChart3, label: 'सुरक्षा अहवाल' },
+    { to: '/settings', icon: Settings, label: 'सेटिंग्ज' }
   ];
 
   return (
@@ -63,9 +63,9 @@ const Navigation = () => {
         <div className="bg-slate-800 rounded-lg p-4">
           <div className="flex items-center space-x-2 mb-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium">सिस्टम स्थिति</span>
+            <span className="text-sm font-medium">सिस्टम स्थिती</span>
           </div>
-          <p className="text-xs text-slate-400">सभी सिस्टम चालू हैं</p>
+          <p className="text-xs text-slate-400">सर्व सिस्टम चालू आहेत</p>
         </div>
       </div>
     </nav>

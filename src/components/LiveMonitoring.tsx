@@ -4,31 +4,31 @@ import { MapPin, Users, Car, AlertTriangle, Clock } from 'lucide-react';
 
 const LiveMonitoring = () => {
   const vehicles = [
-    { id: 'MH01AB1234', driver: 'राज शर्मा', location: 'मुंबई-पुणे हाइवे', status: 'सुरक्षित', speed: '78 km/h' },
-    { id: 'DL03CD5678', driver: 'प्रिया गुप्ता', location: 'दिल्ली कनॉट प्लेस', status: 'चेतावनी', speed: '45 km/h' },
-    { id: 'KA05EF9012', driver: 'अमित कुमार', location: 'बैंगलोर इलेक्ट्रॉनिक सिटी', status: 'सुरक्षित', speed: '52 km/h' },
-    { id: 'TN07GH3456', driver: 'सुनीता रेड्डी', location: 'चेन्नई OMR', status: 'सुरक्षित', speed: '60 km/h' },
-    { id: 'WB09IJ7890', driver: 'रवि दास', location: 'कोलकाता सॉल्ट लेक', status: 'चेतावनी', speed: '35 km/h' },
+    { id: 'MH01AB1234', driver: 'राज शर्मा', location: 'मुंबई-पुणे हायवे', status: 'सुरक्षित', speed: '७८ किमी/तास' },
+    { id: 'DL03CD5678', driver: 'प्रिया गुप्ता', location: 'दिल्ली कनॉट प्लेस', status: 'चेतावणी', speed: '४५ किमी/तास' },
+    { id: 'KA05EF9012', driver: 'अमित कुमार', location: 'बंगळूर इलेक्ट्रॉनिक सिटी', status: 'सुरक्षित', speed: '५२ किमी/तास' },
+    { id: 'TN07GH3456', driver: 'सुनीता रेड्डी', location: 'चेन्नई OMR', status: 'सुरक्षित', speed: '६० किमी/तास' },
+    { id: 'WB09IJ7890', driver: 'रवी दास', location: 'कोलकाता सॉल्ट लेक', status: 'चेतावणी', speed: '३५ किमी/तास' },
   ];
 
   const alerts = [
-    { id: 1, type: 'तेज़ गति', location: 'NH-48, गुड़गांव', time: '2 मिनट पहले', severity: 'medium' },
-    { id: 2, type: 'कठोर ब्रेकिंग', location: 'बांद्रा-वर्ली सी लिंक', time: '5 मिनट पहले', severity: 'high' },
-    { id: 3, type: 'मार्ग विचलन', location: 'हैदराबाद हाई-टेक सिटी', time: '8 मिनट पहले', severity: 'low' },
-    { id: 4, type: 'थकान चेतावनी', location: 'अहमदाबाद S.G. रोड', time: '12 मिनट पहले', severity: 'high' },
+    { id: 1, type: 'वेगवान गती', location: 'NH-48, गुड़गांव', time: '२ मिनिटांपूर्वी', severity: 'medium' },
+    { id: 2, type: 'कडक ब्रेकिंग', location: 'बांद्रा-वर्ली सी लिंक', time: '५ मिनिटांपूर्वी', severity: 'high' },
+    { id: 3, type: 'मार्ग विचलन', location: 'हैदराबाद हाय-टेक सिटी', time: '८ मिनिटांपूर्वी', severity: 'low' },
+    { id: 4, type: 'थकवा चेतावणी', location: 'अहमदाबाद S.G. रोड', time: '१२ मिनिटांपूर्वी', severity: 'high' },
   ];
 
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">लाइव मॉनिटरिंग</h1>
-          <p className="text-gray-600 mt-1">वास्तविक समय वाहन ट्रैकिंग और सुरक्षा निगरानी</p>
+          <h1 className="text-3xl font-bold text-gray-900">थेट निरीक्षण</h1>
+          <p className="text-gray-600 mt-1">वास्तविक वेळ वाहन ट्रॅकिंग आणि सुरक्षा निगरानी</p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="bg-green-50 px-4 py-2 rounded-lg flex items-center space-x-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-            <span className="text-green-700 font-medium">1,923 सक्रिय वाहन</span>
+            <span className="text-green-700 font-medium">१,९२३ सक्रिय वाहने</span>
           </div>
         </div>
       </div>
@@ -37,8 +37,8 @@ const LiveMonitoring = () => {
         <div className="bg-white rounded-xl shadow-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">कुल वाहन</p>
-              <p className="text-2xl font-bold text-gray-900">2,847</p>
+              <p className="text-sm text-gray-600">एकूण वाहने</p>
+              <p className="text-2xl font-bold text-gray-900">२,८४७</p>
             </div>
             <Car className="h-8 w-8 text-blue-500" />
           </div>
@@ -46,8 +46,8 @@ const LiveMonitoring = () => {
         <div className="bg-white rounded-xl shadow-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">सक्रिय ड्राइवर</p>
-              <p className="text-2xl font-bold text-gray-900">1,923</p>
+              <p className="text-sm text-gray-600">सक्रिय चालक</p>
+              <p className="text-2xl font-bold text-gray-900">१,९२३</p>
             </div>
             <Users className="h-8 w-8 text-green-500" />
           </div>
@@ -55,8 +55,8 @@ const LiveMonitoring = () => {
         <div className="bg-white rounded-xl shadow-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">सक्रिय अलर्ट</p>
-              <p className="text-2xl font-bold text-gray-900">23</p>
+              <p className="text-sm text-gray-600">सक्रिय सूचना</p>
+              <p className="text-2xl font-bold text-gray-900">२३</p>
             </div>
             <AlertTriangle className="h-8 w-8 text-red-500" />
           </div>
@@ -64,8 +64,8 @@ const LiveMonitoring = () => {
         <div className="bg-white rounded-xl shadow-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-600">कवर किए गए शहर</p>
-              <p className="text-2xl font-bold text-gray-900">12</p>
+              <p className="text-sm text-gray-600">कव्हर केलेली शहरे</p>
+              <p className="text-2xl font-bold text-gray-900">१२</p>
             </div>
             <MapPin className="h-8 w-8 text-purple-500" />
           </div>
@@ -77,7 +77,7 @@ const LiveMonitoring = () => {
           <div className="p-6 border-b border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center">
               <Car className="h-5 w-5 text-blue-500 mr-2" />
-              लाइव वाहन ट्रैकिंग
+              थेट वाहन ट्रॅकिंग
             </h3>
           </div>
           <div className="divide-y divide-gray-200">
@@ -102,7 +102,7 @@ const LiveMonitoring = () => {
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-medium text-gray-900">{vehicle.speed}</p>
-                    <p className="text-xs text-gray-500">वर्तमान गति</p>
+                    <p className="text-xs text-gray-500">सध्याची गती</p>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@ const LiveMonitoring = () => {
           <div className="p-6 border-b border-gray-200">
             <h3 className="text-lg font-semibold text-gray-900 flex items-center">
               <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
-              सुरक्षा अलर्ट
+              सुरक्षा सूचना
             </h3>
           </div>
           <div className="divide-y divide-gray-200">
@@ -145,7 +145,7 @@ const LiveMonitoring = () => {
                         ? 'bg-yellow-100 text-yellow-800' 
                         : 'bg-green-100 text-green-800'
                   }`}>
-                    {alert.severity === 'high' ? 'उच्च' : alert.severity === 'medium' ? 'मध्यम' : 'कम'}
+                    {alert.severity === 'high' ? 'उच्च' : alert.severity === 'medium' ? 'मध्यम' : 'कमी'}
                   </span>
                 </div>
               </div>
@@ -155,13 +155,13 @@ const LiveMonitoring = () => {
       </div>
 
       <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">AI मॉनिटरिंग सिस्टम स्थिति</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">AI निरीक्षण सिस्टम स्थिती</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-white rounded-lg p-4 border border-indigo-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">मॉडल सटीकता</p>
-                <p className="text-xl font-bold text-indigo-600">94.2%</p>
+                <p className="text-sm text-gray-600">मॉडेल अचूकता</p>
+                <p className="text-xl font-bold text-indigo-600">९४.२%</p>
               </div>
               <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
                 <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
@@ -171,8 +171,8 @@ const LiveMonitoring = () => {
           <div className="bg-white rounded-lg p-4 border border-indigo-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">प्रतिक्रिया समय</p>
-                <p className="text-xl font-bold text-green-600">1.8 सेकंड</p>
+                <p className="text-sm text-gray-600">प्रतिसाद वेळ</p>
+                <p className="text-xl font-bold text-green-600">१.८ सेकंद</p>
               </div>
               <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -182,8 +182,8 @@ const LiveMonitoring = () => {
           <div className="bg-white rounded-lg p-4 border border-indigo-200">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">डेटा प्रोसेसिंग</p>
-                <p className="text-xl font-bold text-purple-600">99.7%</p>
+                <p className="text-sm text-gray-600">डेटा प्रक्रिया</p>
+                <p className="text-xl font-bold text-purple-600">९९.७%</p>
               </div>
               <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
                 <div className="w-3 h-3 bg-purple-500 rounded-full"></div>

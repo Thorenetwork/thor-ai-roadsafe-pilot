@@ -9,15 +9,18 @@ import {
   Map,
   Activity
 } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Navigation = () => {
+  const { t } = useLanguage();
+
   const navItems = [
-    { to: '/', icon: Activity, label: 'डॅशबोर्ड', end: true },
-    { to: '/monitoring', icon: Map, label: 'थेट निरीक्षण' },
-    { to: '/emergency', icon: AlertTriangle, label: 'आपत्कालीन प्रतिसाद' },
-    { to: '/analytics', icon: Brain, label: 'AI विश्लेषण' },
-    { to: '/reports', icon: BarChart3, label: 'सुरक्षा अहवाल' },
-    { to: '/settings', icon: Settings, label: 'सेटिंग्ज' }
+    { to: '/', icon: Activity, label: t('dashboard'), end: true },
+    { to: '/monitoring', icon: Map, label: t('liveMonitoring') },
+    { to: '/emergency', icon: AlertTriangle, label: t('emergencyResponse') },
+    { to: '/analytics', icon: Brain, label: t('analytics') },
+    { to: '/reports', icon: BarChart3, label: t('reports') },
+    { to: '/settings', icon: Settings, label: t('settings') }
   ];
 
   return (
@@ -31,7 +34,7 @@ const Navigation = () => {
           />
           <div>
             <h1 className="text-xl font-bold">Thore Network</h1>
-            <p className="text-sm text-slate-400">AI सुरक्षा पोर्टल</p>
+            <p className="text-sm text-slate-400">{t('welcomeSubtitle')}</p>
           </div>
         </div>
       </div>
@@ -63,9 +66,9 @@ const Navigation = () => {
         <div className="bg-slate-800 rounded-lg p-4">
           <div className="flex items-center space-x-2 mb-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium">सिस्टम स्थिती</span>
+            <span className="text-sm font-medium">{t('systemStatus')}</span>
           </div>
-          <p className="text-xs text-slate-400">सर्व सिस्टम चालू आहेत</p>
+          <p className="text-xs text-slate-400">{t('allSystemsOnline')}</p>
         </div>
       </div>
     </nav>

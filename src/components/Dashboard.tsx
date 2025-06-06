@@ -2,45 +2,48 @@
 import React from 'react';
 import { Users, Car, AlertTriangle, Shield, MapPin, Clock } from 'lucide-react';
 import MetricCard from './MetricCard';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Dashboard = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">रस्ता सुरक्षा डॅशबोर्ड</h1>
-          <p className="text-gray-600 mt-1">AI-आधारित रस्ता सुरक्षा व्यवस्थापन प्रणाली</p>
+          <h1 className="text-3xl font-bold text-gray-900">{t('dashboard')}</h1>
+          <p className="text-gray-600 mt-1">{t('subtitle')}</p>
         </div>
         <div className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg">
           <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-green-700 font-medium">सर्व सिस्टम चालू</span>
+          <span className="text-green-700 font-medium">{t('allSystemsOnline')}</span>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <MetricCard
-          title="एकूण वाहने"
+          title={t('totalVehicles')}
           value="२,८४७"
           change="+१२%"
           icon={Car}
           trend="up"
         />
         <MetricCard
-          title="सक्रिय चालक"
+          title={t('activeDrivers')}
           value="१,९२३"
           change="+८%"
           icon={Users}
           trend="up"
         />
         <MetricCard
-          title="सुरक्षा सूचना"
+          title={t('safetyAlerts')}
           value="१५६"
           change="-२३%"
           icon={AlertTriangle}
           trend="down"
         />
         <MetricCard
-          title="सुरक्षा गुण"
+          title={t('safetyScore')}
           value="९४.२%"
           change="+२.१%"
           icon={Shield}

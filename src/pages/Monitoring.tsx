@@ -1,17 +1,17 @@
 
 import React from 'react';
 import Navigation from '../components/Navigation';
-import Dashboard from '../components/Dashboard';
+import LiveMonitoring from '../components/LiveMonitoring';
 
-const Index = () => {
+const Monitoring = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
       <div className="ml-64 p-8">
-        <Dashboard />
+        <LiveMonitoring />
       </div>
     </div>
   );
 };
 
-export default Index;
+export default Monitoring;

@@ -12,12 +12,12 @@ import {
 
 const Navigation = () => {
   const navItems = [
-    { to: '/', icon: Activity, label: 'Dashboard', end: true },
-    { to: '/monitoring', icon: Map, label: 'Live Monitoring' },
-    { to: '/emergency', icon: AlertTriangle, label: 'Emergency Response' },
-    { to: '/analytics', icon: Brain, label: 'AI Analytics' },
-    { to: '/reports', icon: BarChart3, label: 'Safety Reports' },
-    { to: '/settings', icon: Settings, label: 'Settings' }
+    { to: '/', icon: Activity, label: 'डैशबोर्ड', end: true },
+    { to: '/monitoring', icon: Map, label: 'लाइव मॉनिटरिंग' },
+    { to: '/emergency', icon: AlertTriangle, label: 'आपातकालीन प्रतिक्रिया' },
+    { to: '/analytics', icon: Brain, label: 'AI एनालिटिक्स' },
+    { to: '/reports', icon: BarChart3, label: 'सुरक्षा रिपोर्ट' },
+    { to: '/settings', icon: Settings, label: 'सेटिंग्स' }
   ];
 
   return (
@@ -31,7 +31,7 @@ const Navigation = () => {
           />
           <div>
             <h1 className="text-xl font-bold">Thore Network</h1>
-            <p className="text-sm text-slate-400">AI Safety Portal</p>
+            <p className="text-sm text-slate-400">AI सुरक्षा पोर्टल</p>
           </div>
         </div>
       </div>
@@ -63,9 +63,9 @@ const Navigation = () => {
         <div className="bg-slate-800 rounded-lg p-4">
           <div className="flex items-center space-x-2 mb-2">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium">System Status</span>
+            <span className="text-sm font-medium">सिस्टम स्थिति</span>
           </div>
-          <p className="text-xs text-slate-400">All systems operational</p>
+          <p className="text-xs text-slate-400">सभी सिस्टम चालू हैं</p>
         </div>
       </div>
     </nav>

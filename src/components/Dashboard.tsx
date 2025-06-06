@@ -1,170 +1,147 @@
 
 import React from 'react';
+import { Users, Car, AlertTriangle, Shield, MapPin, Clock } from 'lucide-react';
 import MetricCard from './MetricCard';
-import { 
-  Shield, 
-  AlertTriangle, 
-  Car, 
-  Clock, 
-  Users,
-  Zap,
-  MapPin,
-  TrendingUp
-} from 'lucide-react';
 
 const Dashboard = () => {
-  const metrics = [
-    {
-      title: 'Active Vehicles',
-      value: '2,847',
-      change: '+12%',
-      changeType: 'positive' as const,
-      icon: Car,
-      description: 'Vehicles currently monitored'
-    },
-    {
-      title: 'Incidents Prevented',
-      value: '156',
-      change: '+24%',
-      changeType: 'positive' as const,
-      icon: Shield,
-      description: 'AI-prevented incidents today'
-    },
-    {
-      title: 'Response Time',
-      value: '2.3min',
-      change: '-18%',
-      changeType: 'positive' as const,
-      icon: Clock,
-      description: 'Average emergency response'
-    },
-    {
-      title: 'Active Alerts',
-      value: '8',
-      change: '-5',
-      changeType: 'positive' as const,
-      icon: AlertTriangle,
-      description: 'Current safety alerts'
-    }
-  ];
-
-  const recentIncidents = [
-    { id: 1, type: 'Near Miss', location: 'Highway A1, Mile 23', time: '2 min ago', severity: 'Medium' },
-    { id: 2, type: 'Weather Alert', location: 'Route B7, Mile 15', time: '5 min ago', severity: 'Low' },
-    { id: 3, type: 'Traffic Jam', location: 'City Center', time: '8 min ago', severity: 'Medium' },
-    { id: 4, type: 'Speed Violation', location: 'Highway A1, Mile 18', time: '12 min ago', severity: 'Low' }
-  ];
-
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 text-white">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">AI Safety Command Center</h1>
-            <p className="text-blue-100">Real-time monitoring and emergency response coordination</p>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl font-bold">99.7%</div>
-            <div className="text-blue-200">System Uptime</div>
-          </div>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">सड़क सुरक्षा डैशबोर्ड</h1>
+          <p className="text-gray-600 mt-1">AI-based Road Safety Management System</p>
+        </div>
+        <div className="flex items-center space-x-2 bg-green-50 px-4 py-2 rounded-lg">
+          <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+          <span className="text-green-700 font-medium">सभी सिस्टम चालू</span>
         </div>
       </div>
 
-      {/* Metrics Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {metrics.map((metric, index) => (
-          <MetricCard key={index} {...metric} />
-        ))}
+        <MetricCard
+          title="कुल वाहन"
+          value="2,847"
+          change="+12%"
+          icon={Car}
+          trend="up"
+        />
+        <MetricCard
+          title="सक्रिय ड्राइवर"
+          value="1,923"
+          change="+8%"
+          icon={Users}
+          trend="up"
+        />
+        <MetricCard
+          title="सुरक्षा अलर्ट"
+          value="156"
+          change="-23%"
+          icon={AlertTriangle}
+          trend="down"
+        />
+        <MetricCard
+          title="सुरक्षा स्कोर"
+          value="94.2%"
+          change="+2.1%"
+          icon={Shield}
+          trend="up"
+        />
       </div>
 
-      {/* Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Recent Incidents */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">Recent Incidents</h2>
-            <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-              Live
-            </span>
-          </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <MapPin className="h-5 w-5 text-blue-500 mr-2" />
+            हॉटस्पॉट क्षेत्र
+          </h3>
           <div className="space-y-4">
-            {recentIncidents.map((incident) => (
-              <div key={incident.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-                <div>
-                  <div className="flex items-center space-x-2">
-                    <AlertTriangle className="h-4 w-4 text-orange-500" />
-                    <span className="font-medium text-gray-900">{incident.type}</span>
-                    <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      incident.severity === 'High' ? 'bg-red-100 text-red-800' :
-                      incident.severity === 'Medium' ? 'bg-orange-100 text-orange-800' :
-                      'bg-green-100 text-green-800'
-                    }`}>
-                      {incident.severity}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-600 mt-1">{incident.location}</p>
-                </div>
-                <span className="text-sm text-gray-500">{incident.time}</span>
+            <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+              <div>
+                <p className="font-medium text-gray-900">दिल्ली - गुड़गांव एक्सप्रेसवे</p>
+                <p className="text-sm text-gray-600">18 घटनाएं इस सप्ताह</p>
               </div>
-            ))}
+              <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
+                उच्च जोखिम
+              </span>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+              <div>
+                <p className="font-medium text-gray-900">मुंबई-पुणे हाइवे</p>
+                <p className="text-sm text-gray-600">12 घटनाएं इस सप्ताह</p>
+              </div>
+              <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
+                मध्यम जोखिम
+              </span>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
+              <div>
+                <p className="font-medium text-gray-900">बैंगलोर आउटर रिंग रोड</p>
+                <p className="text-sm text-gray-600">9 घटनाएं इस सप्ताह</p>
+              </div>
+              <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+                मध्यम जोखिम
+              </span>
+            </div>
           </div>
         </div>
 
-        {/* AI Analytics Preview */}
-        <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">AI Performance</h2>
-            <TrendingUp className="h-5 w-5 text-green-500" />
-          </div>
-          <div className="space-y-6">
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-700">Prediction Accuracy</span>
-                <span className="text-sm font-bold text-green-600">94.2%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-green-500 h-2 rounded-full" style={{ width: '94.2%' }}></div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+            <Clock className="h-5 w-5 text-green-500 mr-2" />
+            आज की गतिविधि
+          </h3>
+          <div className="space-y-4">
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-sm text-gray-900">AI मॉडल ने 12 संभावित खतरों का पता लगाया</p>
+                <p className="text-xs text-gray-500">5 मिनट पहले</p>
               </div>
             </div>
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-700">Response Efficiency</span>
-                <span className="text-sm font-bold text-blue-600">91.8%</span>
-              </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-blue-500 h-2 rounded-full" style={{ width: '91.8%' }}></div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-sm text-gray-900">नहीं दिल्ली में ट्रैफिक पैटर्न अपडेट किया गया</p>
+                <p className="text-xs text-gray-500">15 मिनट पहले</p>
               </div>
             </div>
-            <div>
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-gray-700">Model Performance</span>
-                <span className="text-sm font-bold text-purple-600">89.5%</span>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-sm text-gray-900">मुंबई में मौसम चेतावनी जारी</p>
+                <p className="text-xs text-gray-500">1 घंटा पहले</p>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div className="bg-purple-500 h-2 rounded-full" style={{ width: '89.5%' }}></div>
+            </div>
+            <div className="flex items-start space-x-3">
+              <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
+              <div>
+                <p className="text-sm text-gray-900">साप्ताहिक सुरक्षा रिपोर्ट तैयार</p>
+                <p className="text-xs text-gray-500">2 घंटे पहले</p>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Quick Actions */}
-      <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-        <h2 className="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="flex items-center space-x-3 p-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors">
-            <AlertTriangle className="h-6 w-6 text-red-600" />
-            <span className="font-medium text-red-800">Emergency Protocol</span>
-          </button>
-          <button className="flex items-center space-x-3 p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors">
-            <MapPin className="h-6 w-6 text-blue-600" />
-            <span className="font-medium text-blue-800">View Live Map</span>
-          </button>
-          <button className="flex items-center space-x-3 p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors">
-            <Zap className="h-6 w-6 text-green-600" />
-            <span className="font-medium text-green-800">System Diagnostics</span>
-          </button>
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">AI सुरक्षा अंतर्दृष्टि</h3>
+        <p className="text-gray-700 mb-4">
+          हमारे AI मॉडल ने इस सप्ताह 94% सटीकता के साथ 127 संभावित दुर्घटनाओं की भविष्यवाणी की और रोकी।
+          दिल्ली-NCR क्षेत्र में शाम 6-8 बजे के बीच सबसे अधिक जोखिम देखा गया।
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <div className="bg-white rounded-lg p-3 border border-blue-200">
+            <p className="text-sm text-gray-600">औसत प्रतिक्रिया समय</p>
+            <p className="text-xl font-bold text-blue-600">3.2 मिनट</p>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-blue-200">
+            <p className="text-sm text-gray-600">रोकी गई दुर्घटनाएं</p>
+            <p className="text-xl font-bold text-green-600">127</p>
+          </div>
+          <div className="bg-white rounded-lg p-3 border border-blue-200">
+            <p className="text-sm text-gray-600">AI सटीकता</p>
+            <p className="text-xl font-bold text-purple-600">94%</p>
+          </div>
         </div>
       </div>
     </div>

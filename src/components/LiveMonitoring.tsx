@@ -1,135 +1,197 @@
 
-import React, { useState } from 'react';
-import { MapPin, Eye, AlertCircle, Car, Navigation } from 'lucide-react';
+import React from 'react';
+import { MapPin, Users, Car, AlertTriangle, Clock } from 'lucide-react';
 
 const LiveMonitoring = () => {
-  const [selectedVehicle, setSelectedVehicle] = useState(null);
-
   const vehicles = [
-    { id: 'TN001', location: 'Highway A1, Mile 15', status: 'Normal', speed: '65 mph', driver: 'John Smith' },
-    { id: 'TN002', location: 'Route B7, Mile 8', status: 'Alert', speed: '45 mph', driver: 'Sarah Johnson' },
-    { id: 'TN003', location: 'City Center', status: 'Normal', speed: '25 mph', driver: 'Mike Wilson' },
-    { id: 'TN004', location: 'Highway A1, Mile 22', status: 'Warning', speed: '78 mph', driver: 'Lisa Brown' }
+    { id: 'MH01AB1234', driver: 'राज शर्मा', location: 'मुंबई-पुणे हाइवे', status: 'सुरक्षित', speed: '78 km/h' },
+    { id: 'DL03CD5678', driver: 'प्रिया गुप्ता', location: 'दिल्ली कनॉट प्लेस', status: 'चेतावनी', speed: '45 km/h' },
+    { id: 'KA05EF9012', driver: 'अमित कुमार', location: 'बैंगलोर इलेक्ट्रॉनिक सिटी', status: 'सुरक्षित', speed: '52 km/h' },
+    { id: 'TN07GH3456', driver: 'सुनीता रेड्डी', location: 'चेन्नई OMR', status: 'सुरक्षित', speed: '60 km/h' },
+    { id: 'WB09IJ7890', driver: 'रवि दास', location: 'कोलकाता सॉल्ट लेक', status: 'चेतावनी', speed: '35 km/h' },
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'Normal': return 'bg-green-100 text-green-800';
-      case 'Alert': return 'bg-red-100 text-red-800';
-      case 'Warning': return 'bg-orange-100 text-orange-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+  const alerts = [
+    { id: 1, type: 'तेज़ गति', location: 'NH-48, गुड़गांव', time: '2 मिनट पहले', severity: 'medium' },
+    { id: 2, type: 'कठोर ब्रेकिंग', location: 'बांद्रा-वर्ली सी लिंक', time: '5 मिनट पहले', severity: 'high' },
+    { id: 3, type: 'मार्ग विचलन', location: 'हैदराबाद हाई-टेक सिटी', time: '8 मिनट पहले', severity: 'low' },
+    { id: 4, type: 'थकान चेतावनी', location: 'अहमदाबाद S.G. रोड', time: '12 मिनट पहले', severity: 'high' },
+  ];
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Live Vehicle Monitoring</h1>
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-gray-600">Live Updates</span>
-          </div>
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">लाइव मॉनिटरिंग</h1>
+          <p className="text-gray-600 mt-1">वास्तविक समय वाहन ट्रैकिंग और सुरक्षा निगरानी</p>
         </div>
-
-        {/* Map Placeholder */}
-        <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8 mb-6 text-center">
-          <MapPin className="h-16 w-16 text-blue-500 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-700 mb-2">Interactive Map View</h3>
-          <p className="text-gray-600">Real-time vehicle positions and route tracking</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-blue-600">2,847</div>
-              <div className="text-sm text-gray-600">Active Vehicles</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-green-600">2,831</div>
-              <div className="text-sm text-gray-600">Normal Status</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-orange-600">12</div>
-              <div className="text-sm text-gray-600">Warnings</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-2xl font-bold text-red-600">4</div>
-              <div className="text-sm text-gray-600">Critical Alerts</div>
-            </div>
+        <div className="flex items-center space-x-4">
+          <div className="bg-green-50 px-4 py-2 rounded-lg flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-green-700 font-medium">1,923 सक्रिय वाहन</span>
           </div>
-        </div>
-
-        {/* Vehicle List */}
-        <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-gray-900">Vehicle Status</h2>
-          {vehicles.map((vehicle) => (
-            <div 
-              key={vehicle.id}
-              className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer"
-              onClick={() => setSelectedVehicle(vehicle)}
-            >
-              <div className="flex items-center space-x-4">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Car className="h-5 w-5 text-blue-600" />
-                </div>
-                <div>
-                  <div className="flex items-center space-x-2">
-                    <span className="font-semibold text-gray-900">{vehicle.id}</span>
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(vehicle.status)}`}>
-                      {vehicle.status}
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-600">{vehicle.driver}</p>
-                </div>
-              </div>
-              <div className="text-right">
-                <p className="font-medium text-gray-900">{vehicle.speed}</p>
-                <p className="text-sm text-gray-600">{vehicle.location}</p>
-              </div>
-              <Eye className="h-5 w-5 text-gray-400" />
-            </div>
-          ))}
         </div>
       </div>
 
-      {/* Vehicle Details Modal */}
-      {selectedVehicle && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-xl p-6 max-w-md w-full mx-4">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold">Vehicle Details</h3>
-              <button 
-                onClick={() => setSelectedVehicle(null)}
-                className="text-gray-400 hover:text-gray-600"
-              >
-                ✕
-              </button>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">कुल वाहन</p>
+              <p className="text-2xl font-bold text-gray-900">2,847</p>
             </div>
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm font-medium text-gray-600">Vehicle ID</label>
-                <p className="text-lg font-semibold">{selectedVehicle.id}</p>
+            <Car className="h-8 w-8 text-blue-500" />
+          </div>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">सक्रिय ड्राइवर</p>
+              <p className="text-2xl font-bold text-gray-900">1,923</p>
+            </div>
+            <Users className="h-8 w-8 text-green-500" />
+          </div>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">सक्रिय अलर्ट</p>
+              <p className="text-2xl font-bold text-gray-900">23</p>
+            </div>
+            <AlertTriangle className="h-8 w-8 text-red-500" />
+          </div>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm text-gray-600">कवर किए गए शहर</p>
+              <p className="text-2xl font-bold text-gray-900">12</p>
+            </div>
+            <MapPin className="h-8 w-8 text-purple-500" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="bg-white rounded-xl shadow-lg">
+          <div className="p-6 border-b border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+              <Car className="h-5 w-5 text-blue-500 mr-2" />
+              लाइव वाहन ट्रैकिंग
+            </h3>
+          </div>
+          <div className="divide-y divide-gray-200">
+            {vehicles.map((vehicle) => (
+              <div key={vehicle.id} className="p-4 hover:bg-gray-50">
+                <div className="flex items-center justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3">
+                      <div className="font-mono text-sm font-medium text-gray-900">
+                        {vehicle.id}
+                      </div>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        vehicle.status === 'सुरक्षित' 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-yellow-100 text-yellow-800'
+                      }`}>
+                        {vehicle.status}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-1">{vehicle.driver}</p>
+                    <p className="text-sm text-gray-500">{vehicle.location}</p>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm font-medium text-gray-900">{vehicle.speed}</p>
+                    <p className="text-xs text-gray-500">वर्तमान गति</p>
+                  </div>
+                </div>
               </div>
-              <div>
-                <label className="text-sm font-medium text-gray-600">Driver</label>
-                <p className="text-lg">{selectedVehicle.driver}</p>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white rounded-xl shadow-lg">
+          <div className="p-6 border-b border-gray-200">
+            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+              <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
+              सुरक्षा अलर्ट
+            </h3>
+          </div>
+          <div className="divide-y divide-gray-200">
+            {alerts.map((alert) => (
+              <div key={alert.id} className="p-4 hover:bg-gray-50">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2">
+                      <span className={`w-2 h-2 rounded-full ${
+                        alert.severity === 'high' 
+                          ? 'bg-red-500' 
+                          : alert.severity === 'medium' 
+                            ? 'bg-yellow-500' 
+                            : 'bg-green-500'
+                      }`}></span>
+                      <p className="text-sm font-medium text-gray-900">{alert.type}</p>
+                    </div>
+                    <p className="text-sm text-gray-600 mt-1">{alert.location}</p>
+                    <div className="flex items-center space-x-1 mt-2">
+                      <Clock className="h-3 w-3 text-gray-400" />
+                      <p className="text-xs text-gray-500">{alert.time}</p>
+                    </div>
+                  </div>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                    alert.severity === 'high' 
+                      ? 'bg-red-100 text-red-800' 
+                      : alert.severity === 'medium' 
+                        ? 'bg-yellow-100 text-yellow-800' 
+                        : 'bg-green-100 text-green-800'
+                  }`}>
+                    {alert.severity === 'high' ? 'उच्च' : alert.severity === 'medium' ? 'मध्यम' : 'कम'}
+                  </span>
+                </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">AI मॉनिटरिंग सिस्टम स्थिति</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-white rounded-lg p-4 border border-indigo-200">
+            <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-gray-600">Current Speed</label>
-                <p className="text-lg">{selectedVehicle.speed}</p>
+                <p className="text-sm text-gray-600">मॉडल सटीकता</p>
+                <p className="text-xl font-bold text-indigo-600">94.2%</p>
               </div>
-              <div>
-                <label className="text-sm font-medium text-gray-600">Location</label>
-                <p className="text-lg">{selectedVehicle.location}</p>
+              <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
               </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-indigo-200">
+            <div className="flex items-center justify-between">
               <div>
-                <label className="text-sm font-medium text-gray-600">Status</label>
-                <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(selectedVehicle.status)}`}>
-                  {selectedVehicle.status}
-                </span>
+                <p className="text-sm text-gray-600">प्रतिक्रिया समय</p>
+                <p className="text-xl font-bold text-green-600">1.8 सेकंड</p>
+              </div>
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-indigo-200">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-gray-600">डेटा प्रोसेसिंग</p>
+                <p className="text-xl font-bold text-purple-600">99.7%</p>
+              </div>
+              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
               </div>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

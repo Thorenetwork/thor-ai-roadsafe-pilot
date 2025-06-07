@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { useState } from "react";
 import LanguageSelector from "./components/LanguageSelector";
+import PoweredByPopup from "./components/PoweredByPopup";
 import Index from "./pages/Index";
 import Monitoring from "./pages/Monitoring";
 import Emergency from "./pages/Emergency";
@@ -54,6 +55,7 @@ const App = () => {
               <Route path="*" element={<NotFound />} />
             </Routes>
             <ChatSupport />
+            <PoweredByPopup />
           </BrowserRouter>
         </LanguageProvider>
       </TooltipProvider>

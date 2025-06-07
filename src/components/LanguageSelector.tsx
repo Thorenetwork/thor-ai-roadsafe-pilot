@@ -13,8 +13,6 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect })
   const languages = [
     { code: 'en' as Language, name: 'English', flag: '🇬🇧' },
     { code: 'hi' as Language, name: 'हिंदी', flag: '🇮🇳' },
-    { code: 'mr' as Language, name: 'मराठी', flag: '🇮🇳' },
-    { code: 'ta' as Language, name: 'தமிழ்', flag: '🇮🇳' },
   ];
 
   const handleLanguageSelect = (langCode: Language) => {
@@ -66,6 +64,10 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect })
         >
           {t('continue')}
         </button>
+
+        <div className="mt-6 text-center text-xs text-gray-500">
+          Powered by Thore Network PVT LTD
+        </div>
       </div>
     </div>
   );

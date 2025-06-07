@@ -1,7 +1,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type Language = 'hi' | 'en' | 'mr' | 'ta';
+export type Language = 'hi' | 'en';
 
 interface LanguageContextType {
   language: Language;
@@ -55,50 +55,6 @@ const translations = {
     continue: 'जारी रखें',
     welcomeTitle: 'Thore Network में आपका स्वागत है',
     welcomeSubtitle: 'AI सुरक्षा पोर्टल'
-  },
-  mr: {
-    dashboard: 'रस्ता सुरक्षा डॅशबोर्ड',
-    subtitle: 'AI-आधारित रस्ता सुरक्षा व्यवस्थापन प्रणाली',
-    totalVehicles: 'एकूण वाहने',
-    activeDrivers: 'सक्रिय चालक',
-    safetyAlerts: 'सुरक्षा सूचना',
-    safetyScore: 'सुरक्षा गुण',
-    hotspots: 'हॉटस्पॉट क्षेत्रे',
-    activities: 'आजची क्रियाकलाप',
-    liveMonitoring: 'थेट निरीक्षण',
-    emergencyResponse: 'आपत्कालीन प्रतिसाद',
-    analytics: 'AI विश्लेषण',
-    reports: 'सुरक्षा अहवाल',
-    settings: 'सेटिंग्ज',
-    systemStatus: 'सिस्टम स्थिती',
-    allSystemsOnline: 'सर्व सिस्टम चालू आहेत',
-    chatSupport: 'चॅट सपोर्ट',
-    selectLanguage: 'भाषा निवडा',
-    continue: 'पुढे चला',
-    welcomeTitle: 'Thore Network मध्ये आपले स्वागत',
-    welcomeSubtitle: 'AI सुरक्षा पोर्टल'
-  },
-  ta: {
-    dashboard: 'சாலை பாதுகாப்பு டாஷ்போர்டு',
-    subtitle: 'AI-அடிப்படையிலான சாலை பாதுகாப்பு மேலாண்மை அமைப்பு',
-    totalVehicles: 'மொத்த வாகனங்கள்',
-    activeDrivers: 'செயல்படும் ஓட்டுநர்கள்',
-    safetyAlerts: 'பாதுகாப்பு எச்சரிக்கைகள்',
-    safetyScore: 'பாதுகாப்பு மதிப்பெண்',
-    hotspots: 'ஹாட்ஸ்பாட் பகுதிகள்',
-    activities: 'இன்றைய செயல்பாடுகள்',
-    liveMonitoring: 'நேரடி கண்காணிப்பு',
-    emergencyResponse: 'அவசரகால பதில்',
-    analytics: 'AI பகுப்பாய்வு',
-    reports: 'பாதுகாப்பு அறிக்கைகள்',
-    settings: 'அமைப்புகள்',
-    systemStatus: 'அமைப்பு நிலை',
-    allSystemsOnline: 'அனைத்து அமைப்புகளும் ஆன்லைனில்',
-    chatSupport: 'சாட் ஆதரவு',
-    selectLanguage: 'மொழியைத் தேர்ந்தெடுக்கவும்',
-    continue: 'தொடரவும்',
-    welcomeTitle: 'Thore Network இல் உங்களை வரவேற்கிறோம்',
-    welcomeSubtitle: 'AI பாதுகாப்பு போர்டல்'
   }
 };
 

@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 export type Language = 'hi' | 'en';
@@ -20,7 +19,7 @@ const translations = {
     safetyAlerts: 'Safety Alerts',
     safetyScore: 'Safety Score',
     hotspots: 'Hotspot Areas',
-    activities: 'Today\'s Activities',
+    activities: "Today's Activities",
     liveMonitoring: 'Live Monitoring',
     emergencyResponse: 'Emergency Response',
     analytics: 'AI Analytics',
@@ -32,7 +31,8 @@ const translations = {
     selectLanguage: 'Select Language',
     continue: 'Continue',
     welcomeTitle: 'Welcome to Thore Network',
-    welcomeSubtitle: 'AI Safety Portal'
+    welcomeSubtitle: 'AI Safety Portal',
+    // Add/extend more translation keys here if used in Dashboard/Emergency UI
   },
   hi: {
     dashboard: 'सड़क सुरक्षा डैशबोर्ड',
@@ -54,7 +54,8 @@ const translations = {
     selectLanguage: 'भाषा चुनें',
     continue: 'जारी रखें',
     welcomeTitle: 'Thore Network में आपका स्वागत है',
-    welcomeSubtitle: 'AI सुरक्षा पोर्टल'
+    welcomeSubtitle: 'AI सुरक्षा पोर्टल',
+    // Add/extend more translation keys here if used in Dashboard/Emergency UI
   }
 };
 

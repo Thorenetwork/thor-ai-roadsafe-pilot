@@ -5,49 +5,93 @@ import { FileText, Download, Calendar, Filter, TrendingUp, AlertTriangle, Shield
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Reports = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
-  const reports = [
-    { 
-      title: 'साप्ताहिक सुरक्षा अहवाल', 
-      date: '२० डिसेंबर २०२४', 
-      type: 'सुरक्षा', 
-      status: 'तयार',
-      icon: Shield,
-      description: 'या आठवड्यातील सर्व सुरक्षा मेट्रिक्स आणि घटना'
-    },
-    { 
-      title: 'मासिक कार्यप्रदर्शन अहवाल', 
-      date: '१५ डिसेंबर २०२४', 
-      type: 'कार्यप्रदर्शन', 
-      status: 'तयार',
-      icon: TrendingUp,
-      description: 'वाहन उत्पादकता आणि कार्यक्षमता विश्लेषण'
-    },
-    { 
-      title: 'चालक मूल्यांकन अहवाल', 
-      date: '१० डिसेंबर २०२४', 
-      type: 'मानव संसाधन', 
-      status: 'प्रक्रियेत',
-      icon: Users,
-      description: 'चालकांची कामगिरी आणि प्रशिक्षण गरजा'
-    },
-    { 
-      title: 'घटना विश्लेषण अहवाल', 
-      date: '५ डिसेंबर २०२४', 
-      type: 'घटना', 
-      status: 'तयार',
-      icon: AlertTriangle,
-      description: 'अपघात आणि जवळच्या चुकांचे तपशीलवार विश्लेषण'
-    }
-  ];
+  const reports =
+    language === "en"
+      ? [
+          {
+            title: "Weekly Safety Report",
+            date: "20 Dec 2024",
+            type: "Safety",
+            status: t("reportStatusReady"),
+            icon: Shield,
+            description: "All safety metrics and incidents for this week"
+          },
+          {
+            title: "Monthly Performance Report",
+            date: "15 Dec 2024",
+            type: "Performance",
+            status: t("reportStatusReady"),
+            icon: TrendingUp,
+            description: "Vehicle productivity and efficiency analysis"
+          },
+          {
+            title: "Driver Evaluation Report",
+            date: "10 Dec 2024",
+            type: "Human Resource",
+            status: t("reportStatusInProgress"),
+            icon: Users,
+            description: "Driver performance and training needs"
+          },
+          {
+            title: "Incident Analysis Report",
+            date: "5 Dec 2024",
+            type: "Incident",
+            status: t("reportStatusReady"),
+            icon: AlertTriangle,
+            description: "Detailed analysis of accidents and near misses"
+          }
+        ]
+      : [
+          {
+            title: "साप्ताहिक सुरक्षा रिपोर्ट",
+            date: "२० दिसंबर २०२४",
+            type: "सुरक्षा",
+            status: t("reportStatusReady"),
+            icon: Shield,
+            description: "इस सप्ताह के सभी सुरक्षा मेट्रिक्स और घटनाएँ"
+          },
+          {
+            title: "मासिक प्रदर्शन रिपोर्ट",
+            date: "१५ दिसंबर २०२४",
+            type: "प्रदर्शन",
+            status: t("reportStatusReady"),
+            icon: TrendingUp,
+            description: "वाहन उत्पादकता और दक्षता विश्लेषण"
+          },
+          {
+            title: "चालक मूल्यांकन रिपोर्ट",
+            date: "१० दिसंबर २०२४",
+            type: "मानव संसाधन",
+            status: t("reportStatusInProgress"),
+            icon: Users,
+            description: "चालक प्रदर्शन और प्रशिक्षण आवश्यकताएँ"
+          },
+          {
+            title: "घटना विश्लेषण रिपोर्ट",
+            date: "५ दिसंबर २०२४",
+            type: "घटना",
+            status: t("reportStatusReady"),
+            icon: AlertTriangle,
+            description: "दुर्घटनाओं और नज़दीकी चूकों का विस्तृत विश्लेषण"
+          }
+        ];
 
-  const metrics = [
-    { label: 'एकूण अहवाल', value: '१२८', change: '+८%' },
-    { label: 'मासिक अहवाल', value: '२४', change: '+५%' },
-    { label: 'सुरक्षा स्कोअर', value: '९४.२%', change: '+२.१%' },
-    { label: 'अनुपालन दर', value: '९८.५%', change: '+१.३%' }
-  ];
+  const metrics =
+    language === "en"
+      ? [
+          { label: t("allReports"), value: "128", change: "+8%" },
+          { label: t("monthlyReports"), value: "24", change: "+5%" },
+          { label: t("safetyScore"), value: "94.2%", change: "+2.1%" },
+          { label: t("complianceRate"), value: "98.5%", change: "+1.3%" }
+        ]
+      : [
+          { label: t("allReports"), value: "१२८", change: "+८%" },
+          { label: t("monthlyReports"), value: "२४", change: "+५%" },
+          { label: t("safetyScore"), value: "९४.२%", change: "+२.१%" },
+          { label: t("complianceRate"), value: "९८.५%", change: "+१.३%" }
+        ];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -56,17 +100,17 @@ const Reports = () => {
         <div className="space-y-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">अहवाल आणि विश्लेषण</h1>
-              <p className="text-gray-600 mt-1">तपशीलवार अहवाल आणि डेटा निर्यात</p>
+              <h1 className="text-3xl font-bold text-gray-900">{t("safetyReports")}</h1>
+              <p className="text-gray-600 mt-1">{t("reportsSubtitle")}</p>
             </div>
             <div className="flex items-center space-x-3">
               <button className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                 <Download className="h-4 w-4" />
-                <span>अहवाल डाउनलोड</span>
+                <span>{t("downloadReport")}</span>
               </button>
               <button className="flex items-center space-x-2 bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
                 <Filter className="h-4 w-4" />
-                <span>फिल्टर</span>
+                <span>{t("filter")}</span>
               </button>
             </div>
           </div>
@@ -90,7 +134,7 @@ const Reports = () => {
             <div className="p-6 border-b border-gray-200">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center">
                 <FileText className="h-5 w-5 text-blue-500 mr-2" />
-                अलीकडील अहवाल
+                {t("recentReports")}
               </h3>
             </div>
             <div className="divide-y divide-gray-200">
@@ -109,21 +153,25 @@ const Reports = () => {
                             <Calendar className="h-4 w-4 text-gray-400" />
                             <span className="text-sm text-gray-500">{report.date}</span>
                           </div>
-                          <span className="text-sm text-gray-500">प्रकार: {report.type}</span>
+                          <span className="text-sm text-gray-500">
+                            {t("reportType")}: {report.type}
+                          </span>
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                        report.status === 'तयार' 
-                          ? 'bg-green-100 text-green-800' 
-                          : 'bg-yellow-100 text-yellow-800'
-                      }`}>
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-medium ${
+                          report.status === t("reportStatusReady")
+                            ? "bg-green-100 text-green-800"
+                            : "bg-yellow-100 text-yellow-800"
+                        }`}
+                      >
                         {report.status}
                       </span>
                       <button className="flex items-center space-x-1 text-blue-600 hover:text-blue-800">
                         <Download className="h-4 w-4" />
-                        <span className="text-sm">डाउनलोड</span>
+                        <span className="text-sm">{t("download")}</span>
                       </button>
                     </div>
                   </div>
@@ -134,50 +182,50 @@ const Reports = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">अहवाल श्रेणी</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{t("reportCategories")}</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">सुरक्षा अहवाल</span>
-                  <span className="font-medium text-gray-900">४२</span>
+                  <span className="text-gray-700">{t("safetyReport")}</span>
+                  <span className="font-medium text-gray-900">{language === "en" ? "42" : "४२"}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">कार्यप्रदर्शन अहवाल</span>
-                  <span className="font-medium text-gray-900">३८</span>
+                  <span className="text-gray-700">{t("performanceReport")}</span>
+                  <span className="font-medium text-gray-900">{language === "en" ? "38" : "३८"}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">अनुपालन अहवाल</span>
-                  <span className="font-medium text-gray-900">२८</span>
+                  <span className="text-gray-700">{t("complianceReport")}</span>
+                  <span className="font-medium text-gray-900">{language === "en" ? "28" : "२८"}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">घटना अहवाल</span>
-                  <span className="font-medium text-gray-900">२०</span>
+                  <span className="text-gray-700">{t("incidentReport")}</span>
+                  <span className="font-medium text-gray-900">{language === "en" ? "20" : "२०"}</span>
                 </div>
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">कस्टम अहवाल तयार करा</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">{t("createCustomReport")}</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">अहवाल प्रकार</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("reportTypeLabel")}</label>
                   <select className="w-full border border-gray-300 rounded-lg px-3 py-2">
-                    <option>सुरक्षा विश्लेषण</option>
-                    <option>कार्यप्रदर्शन मेट्रिक्स</option>
-                    <option>चालक मूल्यांकन</option>
-                    <option>घटना अहवाल</option>
+                    <option>{t("safetyReport")}</option>
+                    <option>{t("performanceMetrics")}</option>
+                    <option>{t("driverEvaluation")}</option>
+                    <option>{t("incidentReportSingular")}</option>
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">कालावधी</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">{t("period")}</label>
                   <select className="w-full border border-gray-300 rounded-lg px-3 py-2">
-                    <option>गेला आठवडा</option>
-                    <option>गेला महिना</option>
-                    <option>गेली तीन महिने</option>
-                    <option>कस्टम रेंज</option>
+                    <option>{t("lastWeek")}</option>
+                    <option>{t("lastMonth")}</option>
+                    <option>{t("lastThreeMonths")}</option>
+                    <option>{t("customRange")}</option>
                   </select>
                 </div>
                 <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
-                  अहवाल तयार करा
+                  {t("generateReport")}
                 </button>
               </div>
             </div>

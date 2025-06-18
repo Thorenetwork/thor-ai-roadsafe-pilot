@@ -15,7 +15,7 @@ import Analytics from "./pages/Analytics";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
-import ChatSupport from "./components/ChatSupport";
+import Maargdarshak from "./components/Maargdarshak";
 
 const queryClient = new QueryClient();
 
@@ -54,7 +54,7 @@ const App = () => {
               <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-            <ChatSupport />
+            <Maargdarshak />
             <PoweredByPopup />
           </BrowserRouter>
         </LanguageProvider>

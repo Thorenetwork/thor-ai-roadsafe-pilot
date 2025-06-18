@@ -1,10 +1,28 @@
-
-import React from "react";
-import { MapPin, Users, Car, AlertTriangle, Clock } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { MapPin, Users, Car, AlertTriangle, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const LiveMonitoring = () => {
   const { t, language } = useLanguage();
+  const [currentPage, setCurrentPage] = useState(0);
+  const totalPages = 2;
+
+  // Auto-advance pages every 4 minutes
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentPage((prev) => (prev + 1) % totalPages);
+    }, 240000); // 4 minutes in milliseconds
+
+    return () => clearInterval(interval);
+  }, [totalPages]);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => (prev + 1) % totalPages);
+  };
+
+  const prevPage = () => {
+    setCurrentPage((prev) => (prev - 1 + totalPages) % totalPages);
+  };
 
   const vehicles =
     language === "en"
@@ -52,176 +70,217 @@ const LiveMonitoring = () => {
               {language === "en" ? "1,923" : "१,९२३"} {t("vehiclesActive")}
             </span>
           </div>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">{t("totalVehicles")}</p>
-              <p className="text-2xl font-bold text-gray-900">{language === "en" ? "2,847" : "२,८४७"}</p>
-            </div>
-            <Car className="h-8 w-8 text-blue-500" />
-          </div>
-        </div>
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">{t("activeDrivers")}</p>
-              <p className="text-2xl font-bold text-gray-900">{language === "en" ? "1,923" : "१,९२३"}</p>
-            </div>
-            <Users className="h-8 w-8 text-green-500" />
-          </div>
-        </div>
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">{t("activeAlerts")}</p>
-              <p className="text-2xl font-bold text-gray-900">{language === "en" ? "23" : "२३"}</p>
-            </div>
-            <AlertTriangle className="h-8 w-8 text-red-500" />
-          </div>
-        </div>
-        <div className="bg-white rounded-xl shadow-lg p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">{t("coveredCities")}</p>
-              <p className="text-2xl font-bold text-gray-900">{language === "en" ? "12" : "१२"}</p>
-            </div>
-            <MapPin className="h-8 w-8 text-purple-500" />
+          
+          {/* Pagination Controls */}
+          <div className="flex items-center space-x-2 bg-white px-4 py-2 rounded-lg shadow-sm border">
+            <button
+              onClick={prevPage}
+              className="p-1 hover:bg-gray-100 rounded"
+            >
+              <ChevronLeft className="h-4 w-4 text-gray-600" />
+            </button>
+            <span className="text-sm text-gray-600">
+              {currentPage + 1} / {totalPages}
+            </span>
+            <button
+              onClick={nextPage}
+              className="p-1 hover:bg-gray-100 rounded"
+            >
+              <ChevronRight className="h-4 w-4 text-gray-600" />
+            </button>
           </div>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <div className="bg-white rounded-xl shadow-lg">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-              <Car className="h-5 w-5 text-blue-500 mr-2" />
-              {t("liveVehicleTracking")}
-            </h3>
+      {/* Page 0: Live Monitoring Overview */}
+      {currentPage === 0 && (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("totalVehicles")}</p>
+                  <p className="text-2xl font-bold text-gray-900">{language === "en" ? "2,847" : "२,८४७"}</p>
+                </div>
+                <Car className="h-8 w-8 text-blue-500" />
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("activeDrivers")}</p>
+                  <p className="text-2xl font-bold text-gray-900">{language === "en" ? "1,923" : "१,९२३"}</p>
+                </div>
+                <Users className="h-8 w-8 text-green-500" />
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("activeAlerts")}</p>
+                  <p className="text-2xl font-bold text-gray-900">{language === "en" ? "23" : "२३"}</p>
+                </div>
+                <AlertTriangle className="h-8 w-8 text-red-500" />
+              </div>
+            </div>
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("coveredCities")}</p>
+                  <p className="text-2xl font-bold text-gray-900">{language === "en" ? "12" : "१२"}</p>
+                </div>
+                <MapPin className="h-8 w-8 text-purple-500" />
+              </div>
+            </div>
           </div>
-          <div className="divide-y divide-gray-200">
-            {vehicles.map((vehicle) => (
-              <div key={vehicle.id} className="p-4 hover:bg-gray-50">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-3">
-                      <div className="font-mono text-sm font-medium text-gray-900">{vehicle.id}</div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white rounded-xl shadow-lg">
+              <div className="p-6 border-b border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Car className="h-5 w-5 text-blue-500 mr-2" />
+                  {t("liveVehicleTracking")}
+                </h3>
+              </div>
+              <div className="divide-y divide-gray-200">
+                {vehicles.map((vehicle) => (
+                  <div key={vehicle.id} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-3">
+                          <div className="font-mono text-sm font-medium text-gray-900">{vehicle.id}</div>
+                          <span
+                            className={`px-2 py-1 rounded-full text-xs font-medium ${
+                              vehicle.status === (language === "en" ? "Safe" : "सुरक्षित")
+                                ? "bg-green-100 text-green-800"
+                                : "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
+                            {vehicle.status}
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-600 mt-1">{vehicle.driver}</p>
+                        <p className="text-sm text-gray-500">{vehicle.location}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm font-medium text-gray-900">{vehicle.speed}</p>
+                        <p className="text-xs text-gray-500">{t("currentSpeed")}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg">
+              <div className="p-6 border-b border-gray-200">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
+                  {t("safetyAlerts")}
+                </h3>
+              </div>
+              <div className="divide-y divide-gray-200">
+                {alerts.map((alert) => (
+                  <div key={alert.id} className="p-4 hover:bg-gray-50">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center space-x-2">
+                          <span
+                            className={`w-2 h-2 rounded-full ${
+                              alert.severity === "high"
+                                ? "bg-red-500"
+                                : alert.severity === "medium"
+                                ? "bg-yellow-500"
+                                : "bg-green-500"
+                            }`}
+                          ></span>
+                          <p className="text-sm font-medium text-gray-900">{alert.type}</p>
+                        </div>
+                        <p className="text-sm text-gray-600 mt-1">{alert.location}</p>
+                        <div className="flex items-center space-x-1 mt-2">
+                          <Clock className="h-3 w-3 text-gray-400" />
+                          <p className="text-xs text-gray-500">{alert.time}</p>
+                        </div>
+                      </div>
                       <span
                         className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          vehicle.status === (language === "en" ? "Safe" : "सुरक्षित")
-                            ? "bg-green-100 text-green-800"
-                            : "bg-yellow-100 text-yellow-800"
+                          alert.severity === "high"
+                            ? "bg-red-100 text-red-800"
+                            : alert.severity === "medium"
+                            ? "bg-yellow-100 text-yellow-800"
+                            : "bg-green-100 text-green-800"
                         }`}
                       >
-                        {vehicle.status}
+                        {t(
+                          alert.severity === "high"
+                            ? "high"
+                            : alert.severity === "medium"
+                            ? "medium"
+                            : "low"
+                        )}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600 mt-1">{vehicle.driver}</p>
-                    <p className="text-sm text-gray-500">{vehicle.location}</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm font-medium text-gray-900">{vehicle.speed}</p>
-                    <p className="text-xs text-gray-500">{t("currentSpeed")}</p>
-                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </>
+      )}
+
+      {/* Page 1: AI Monitoring System */}
+      {currentPage === 1 && (
+        <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
+          <h3 className="text-lg font-semibold text-gray-900 mb-4">{t("aiMonitoringSystemStatus") || "AI Monitoring System Status"}</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white rounded-lg p-4 border border-indigo-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("modelAccuracy")}</p>
+                  <p className="text-xl font-bold text-indigo-600">{language === "en" ? "94.2%" : "९४.२%"}</p>
+                </div>
+                <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl shadow-lg">
-          <div className="p-6 border-b border-gray-200">
-            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-              <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
-              {t("safetyAlerts")}
-            </h3>
-          </div>
-          <div className="divide-y divide-gray-200">
-            {alerts.map((alert) => (
-              <div key={alert.id} className="p-4 hover:bg-gray-50">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center space-x-2">
-                      <span
-                        className={`w-2 h-2 rounded-full ${
-                          alert.severity === "high"
-                            ? "bg-red-500"
-                            : alert.severity === "medium"
-                            ? "bg-yellow-500"
-                            : "bg-green-500"
-                        }`}
-                      ></span>
-                      <p className="text-sm font-medium text-gray-900">{alert.type}</p>
-                    </div>
-                    <p className="text-sm text-gray-600 mt-1">{alert.location}</p>
-                    <div className="flex items-center space-x-1 mt-2">
-                      <Clock className="h-3 w-3 text-gray-400" />
-                      <p className="text-xs text-gray-500">{alert.time}</p>
-                    </div>
-                  </div>
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      alert.severity === "high"
-                        ? "bg-red-100 text-red-800"
-                        : alert.severity === "medium"
-                        ? "bg-yellow-100 text-yellow-800"
-                        : "bg-green-100 text-green-800"
-                    }`}
-                  >
-                    {t(
-                      alert.severity === "high"
-                        ? "high"
-                        : alert.severity === "medium"
-                        ? "medium"
-                        : "low"
-                    )}
-                  </span>
+            </div>
+            <div className="bg-white rounded-lg p-4 border border-indigo-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("responseTime")}</p>
+                  <p className="text-xl font-bold text-green-600">{language === "en" ? "1.8" : "१.८"} {t("seconds")}</p>
+                </div>
+                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                 </div>
               </div>
-            ))}
+            </div>
+            <div className="bg-white rounded-lg p-4 border border-indigo-200">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-600">{t("dataProcessing")}</p>
+                  <p className="text-xl font-bold text-purple-600">{language === "en" ? "99.7%" : "९९.७%"}</p>
+                </div>
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      <div className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-100">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">{t("aiMonitoringSystemStatus") || "AI Monitoring System Status"}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-white rounded-lg p-4 border border-indigo-200">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">{t("modelAccuracy")}</p>
-                <p className="text-xl font-bold text-indigo-600">{language === "en" ? "94.2%" : "९४.२%"}</p>
-              </div>
-              <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-indigo-500 rounded-full"></div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-4 border border-indigo-200">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">{t("responseTime")}</p>
-                <p className="text-xl font-bold text-green-600">{language === "en" ? "1.8" : "१.८"} {t("seconds")}</p>
-              </div>
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-lg p-4 border border-indigo-200">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-gray-600">{t("dataProcessing")}</p>
-                <p className="text-xl font-bold text-purple-600">{language === "en" ? "99.7%" : "९९.७%"}</p>
-              </div>
-              <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-              </div>
-            </div>
-          </div>
+      {/* Auto-advance indicator */}
+      <div className="flex justify-center">
+        <div className="flex space-x-2">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <div
+              key={index}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentPage ? 'bg-blue-500' : 'bg-gray-300'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </div>

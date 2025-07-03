@@ -41,7 +41,7 @@ const HeroSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
                 <div className="w-8 h-8 bg-green-400 rounded-full mb-3"></div>
                 <h3 className="font-semibold mb-2">
@@ -76,6 +76,47 @@ const HeroSection = () => {
                     ? 'Instant alert system with coordinated emergency services'
                     : 'समन्वित आपातकालीन सेवाओं के साथ तत्काल अलर्ट सिस्टम'}
                 </p>
+              </div>
+            </div>
+
+            {/* Mobile App Download Section */}
+            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+              <div className="flex items-center justify-between">
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {language === 'en' ? 'Download Maarg.AI Mobile App' : 'Maarg.AI मोबाइल ऐप डाउनलोड करें'}
+                  </h3>
+                  <p className="text-blue-100 mb-4">
+                    {language === 'en' 
+                      ? 'Get real-time alerts, track vehicles, and access emergency features on-the-go'
+                      : 'रीयल-टाइम अलर्ट प्राप्त करें, वाहनों को ट्रैक करें, और चलते-फिरते आपातकालीन सुविधाओं का उपयोग करें'}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <button className="flex items-center justify-center space-x-2 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.61 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.75 11.5 20.75 12C20.75 12.5 20.53 12.9 20.18 13.18L17.89 14.5L15.39 12L17.89 9.5L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/>
+                      </svg>
+                      <span>{language === 'en' ? 'Download for Android' : 'Android के लिए डाउनलोड करें'}</span>
+                    </button>
+                    <button className="flex items-center justify-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.79 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                      </svg>
+                      <span>{language === 'en' ? 'Download for iOS' : 'iOS के लिए डाउनलोड करें'}</span>
+                    </button>
+                  </div>
+                </div>
+                <div className="hidden md:block ml-6">
+                  <div className="bg-white p-3 rounded-lg">
+                    <svg className="w-16 h-16 text-gray-800" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <rect x="7" y="7" width="4" height="4"/>
+                      <rect x="7" y="13" width="4" height="4"/>
+                      <rect x="13" y="7" width="4" height="4"/>
+                      <rect x="13" y="13" width="4" height="4"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

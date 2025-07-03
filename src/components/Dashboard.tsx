@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Users, Car, AlertTriangle, Shield, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
 import MetricCard from './MetricCard';
+import WeatherPrediction from './WeatherPrediction';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Dashboard = () => {
   const { t, language } = useLanguage();
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = 3;
+  const totalPages = 4;
 
   // Auto-advance pages every 3.5 minutes
   useEffect(() => {
@@ -315,6 +316,11 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Page 3: Weather Prediction */}
+      {currentPage === 3 && (
+        <WeatherPrediction />
       )}
 
       {/* Auto-advance indicator */}

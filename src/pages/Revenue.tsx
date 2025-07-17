@@ -20,53 +20,53 @@ const Revenue = () => {
 
   const revenueStreams = [
     {
-      title: 'Subscription Revenue',
-      amount: '₹2,40,000',
-      percentage: 45,
-      growth: '+12%',
+      title: 'State Government Grants',
+      amount: '₹45,00,000',
+      percentage: 50,
+      growth: '+25%',
+      icon: Target,
+      color: 'bg-emerald-500'
+    },
+    {
+      title: 'Corporate Partnerships',
+      amount: '₹27,00,000',
+      percentage: 30,
+      growth: '+18%',
       icon: Users,
       color: 'bg-blue-500'
     },
     {
-      title: 'Emergency Services',
-      amount: '₹1,80,000',
-      percentage: 35,
-      growth: '+8%',
+      title: 'Ride Sharing Apps',
+      amount: '₹13,50,000',
+      percentage: 15,
+      growth: '+22%',
       icon: Zap,
-      color: 'bg-red-500'
+      color: 'bg-orange-500'
     },
     {
-      title: 'Data Analytics',
-      amount: '₹80,000',
-      percentage: 15,
+      title: 'Data Analytics & API',
+      amount: '₹4,50,000',
+      percentage: 5,
       growth: '+15%',
       icon: BarChart3,
-      color: 'bg-green-500'
-    },
-    {
-      title: 'API Licensing',
-      amount: '₹40,000',
-      percentage: 5,
-      growth: '+20%',
-      icon: PieChart,
       color: 'bg-purple-500'
     }
   ];
 
   const projections = [
-    { month: 'Jan 2024', revenue: 320000, target: 300000 },
-    { month: 'Feb 2024', revenue: 350000, target: 340000 },
-    { month: 'Mar 2024', revenue: 380000, target: 380000 },
-    { month: 'Apr 2024', revenue: 420000, target: 420000 },
-    { month: 'May 2024', revenue: 450000, target: 460000 },
-    { month: 'Jun 2024', revenue: 480000, target: 500000 }
+    { month: 'Jan 2024', revenue: 7200000, target: 7000000 },
+    { month: 'Feb 2024', revenue: 7800000, target: 7500000 },
+    { month: 'Mar 2024', revenue: 8500000, target: 8200000 },
+    { month: 'Apr 2024', revenue: 9200000, target: 9000000 },
+    { month: 'May 2024', revenue: 9800000, target: 9500000 },
+    { month: 'Jun 2024', revenue: 10500000, target: 10200000 }
   ];
 
   const metrics = [
-    { label: 'Monthly Recurring Revenue', value: '₹3,20,000', change: '+15%' },
-    { label: 'Annual Revenue Run Rate', value: '₹38,40,000', change: '+18%' },
-    { label: 'Customer Lifetime Value', value: '₹45,000', change: '+12%' },
-    { label: 'Average Revenue Per User', value: '₹1,200', change: '+8%' }
+    { label: 'Monthly Recurring Revenue', value: '₹90,00,000', change: '+25%' },
+    { label: 'Annual Revenue Run Rate', value: '₹10,80,00,000', change: '+28%' },
+    { label: 'Average Contract Value', value: '₹25,00,000', change: '+22%' },
+    { label: 'Government Grant Pipeline', value: '₹2,50,00,000', change: '+35%' }
   ];
 
   return (
@@ -148,7 +148,7 @@ const Revenue = () => {
                 <div key={index} className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="font-medium">{projection.month}</span>
-                    <span>₹{projection.revenue.toLocaleString()} / ₹{projection.target.toLocaleString()}</span>
+                    <span>₹{(projection.revenue/100000).toFixed(1)}L / ₹{(projection.target/100000).toFixed(1)}L</span>
                   </div>
                   <Progress 
                     value={(projection.revenue / projection.target) * 100} 
@@ -175,40 +175,43 @@ const Revenue = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="text-center p-4 bg-emerald-50 rounded-lg border-2 border-emerald-200">
+                <Target className="h-8 w-8 text-emerald-600 mx-auto mb-2" />
+                <h3 className="font-semibold text-gray-900">State Government Grants</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Road safety initiatives & smart city projects
+                </p>
+                <p className="text-lg font-bold text-emerald-600 mt-2">₹50L-5Cr/project</p>
+                <div className="mt-2 px-2 py-1 bg-emerald-100 rounded text-xs text-emerald-700 font-medium">
+                  PRIMARY REVENUE
+                </div>
+              </div>
+              
               <div className="text-center p-4 bg-blue-50 rounded-lg">
                 <Users className="h-8 w-8 text-blue-500 mx-auto mb-2" />
-                <h3 className="font-semibold text-gray-900">SaaS Subscriptions</h3>
+                <h3 className="font-semibold text-gray-900">Corporate Partnerships</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Monthly/Annual plans for road safety monitoring
+                  Fleet management & employee safety solutions
                 </p>
-                <p className="text-lg font-bold text-blue-600 mt-2">₹999-9,999/mo</p>
+                <p className="text-lg font-bold text-blue-600 mt-2">₹5L-50L/year</p>
               </div>
               
-              <div className="text-center p-4 bg-red-50 rounded-lg">
-                <Zap className="h-8 w-8 text-red-500 mx-auto mb-2" />
-                <h3 className="font-semibold text-gray-900">Emergency Services</h3>
+              <div className="text-center p-4 bg-orange-50 rounded-lg">
+                <Zap className="h-8 w-8 text-orange-500 mx-auto mb-2" />
+                <h3 className="font-semibold text-gray-900">Ride Sharing Apps</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Pay-per-use emergency response coordination
+                  Ola, Uber, Rapido safety integration
                 </p>
-                <p className="text-lg font-bold text-red-600 mt-2">₹500-2,000/call</p>
-              </div>
-              
-              <div className="text-center p-4 bg-green-50 rounded-lg">
-                <BarChart3 className="h-8 w-8 text-green-500 mx-auto mb-2" />
-                <h3 className="font-semibold text-gray-900">Data Analytics</h3>
-                <p className="text-sm text-gray-600 mt-1">
-                  Custom reports and analytics solutions
-                </p>
-                <p className="text-lg font-bold text-green-600 mt-2">₹5,000-50,000</p>
+                <p className="text-lg font-bold text-orange-600 mt-2">₹2L-25L/month</p>
               </div>
               
               <div className="text-center p-4 bg-purple-50 rounded-lg">
-                <PieChart className="h-8 w-8 text-purple-500 mx-auto mb-2" />
-                <h3 className="font-semibold text-gray-900">API Licensing</h3>
+                <BarChart3 className="h-8 w-8 text-purple-500 mx-auto mb-2" />
+                <h3 className="font-semibold text-gray-900">Data & API Services</h3>
                 <p className="text-sm text-gray-600 mt-1">
-                  Third-party integrations and API access
+                  Real-time data feeds & custom analytics
                 </p>
-                <p className="text-lg font-bold text-purple-600 mt-2">₹10,000-1,00,000</p>
+                <p className="text-lg font-bold text-purple-600 mt-2">₹50K-10L/month</p>
               </div>
             </div>
           </CardContent>
@@ -225,22 +228,25 @@ const Revenue = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg">
+              <div className="text-center p-6 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Q1 2024 Target</h3>
-                <p className="text-3xl font-bold">₹12L</p>
+                <p className="text-3xl font-bold">₹25Cr</p>
                 <p className="text-sm opacity-90 mt-1">Jan - Mar 2024</p>
+                <p className="text-xs opacity-75 mt-1">Govt grants pipeline</p>
               </div>
               
-              <div className="text-center p-6 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg">
+              <div className="text-center p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Q2 2024 Target</h3>
-                <p className="text-3xl font-bold">₹15L</p>
+                <p className="text-3xl font-bold">₹30Cr</p>
                 <p className="text-sm opacity-90 mt-1">Apr - Jun 2024</p>
+                <p className="text-xs opacity-75 mt-1">Corporate expansion</p>
               </div>
               
               <div className="text-center p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Annual Target</h3>
-                <p className="text-3xl font-bold">₹60L</p>
+                <p className="text-3xl font-bold">₹120Cr</p>
                 <p className="text-sm opacity-90 mt-1">Full Year 2024</p>
+                <p className="text-xs opacity-75 mt-1">Multi-state deployment</p>
               </div>
             </div>
           </CardContent>

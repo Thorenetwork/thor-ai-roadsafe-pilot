@@ -21,7 +21,7 @@ const Revenue = () => {
   const revenueStreams = [
     {
       title: 'State Government Grants',
-      amount: '₹45,00,000',
+      amount: '₹1,50,00,000',
       percentage: 50,
       growth: '+25%',
       icon: Target,
@@ -29,7 +29,7 @@ const Revenue = () => {
     },
     {
       title: 'Corporate Partnerships',
-      amount: '₹27,00,000',
+      amount: '₹90,00,000',
       percentage: 30,
       growth: '+18%',
       icon: Users,
@@ -37,7 +37,7 @@ const Revenue = () => {
     },
     {
       title: 'Ride Sharing Apps',
-      amount: '₹13,50,000',
+      amount: '₹45,00,000',
       percentage: 15,
       growth: '+22%',
       icon: Zap,
@@ -45,7 +45,7 @@ const Revenue = () => {
     },
     {
       title: 'Data Analytics & API',
-      amount: '₹4,50,000',
+      amount: '₹15,00,000',
       percentage: 5,
       growth: '+15%',
       icon: BarChart3,
@@ -54,19 +54,19 @@ const Revenue = () => {
   ];
 
   const projections = [
-    { month: 'Jan 2024', revenue: 7200000, target: 7000000 },
-    { month: 'Feb 2024', revenue: 7800000, target: 7500000 },
-    { month: 'Mar 2024', revenue: 8500000, target: 8200000 },
-    { month: 'Apr 2024', revenue: 9200000, target: 9000000 },
-    { month: 'May 2024', revenue: 9800000, target: 9500000 },
-    { month: 'Jun 2024', revenue: 10500000, target: 10200000 }
+    { month: 'Jan 2024', revenue: 2400000, target: 2300000 },
+    { month: 'Feb 2024', revenue: 2600000, target: 2500000 },
+    { month: 'Mar 2024', revenue: 2800000, target: 2700000 },
+    { month: 'Apr 2024', revenue: 3000000, target: 2900000 },
+    { month: 'May 2024', revenue: 3200000, target: 3100000 },
+    { month: 'Jun 2024', revenue: 3400000, target: 3300000 }
   ];
 
   const metrics = [
-    { label: 'Monthly Recurring Revenue', value: '₹90,00,000', change: '+25%' },
-    { label: 'Annual Revenue Run Rate', value: '₹10,80,00,000', change: '+28%' },
-    { label: 'Average Contract Value', value: '₹25,00,000', change: '+22%' },
-    { label: 'Government Grant Pipeline', value: '₹2,50,00,000', change: '+35%' }
+    { label: 'Monthly Recurring Revenue', value: '₹30,00,000', change: '+25%' },
+    { label: 'Annual Revenue Run Rate', value: '₹3,60,00,000', change: '+28%' },
+    { label: 'Average Contract Value', value: '₹8,50,000', change: '+22%' },
+    { label: 'Government Grant Pipeline', value: '₹85,00,000', change: '+35%' }
   ];
 
   return (
@@ -181,7 +181,7 @@ const Revenue = () => {
                 <p className="text-sm text-gray-600 mt-1">
                   Road safety initiatives & smart city projects
                 </p>
-                <p className="text-lg font-bold text-emerald-600 mt-2">₹50L-5Cr/project</p>
+                <p className="text-lg font-bold text-emerald-600 mt-2">₹15L-75L/project</p>
                 <div className="mt-2 px-2 py-1 bg-emerald-100 rounded text-xs text-emerald-700 font-medium">
                   PRIMARY REVENUE
                 </div>
@@ -193,7 +193,7 @@ const Revenue = () => {
                 <p className="text-sm text-gray-600 mt-1">
                   Fleet management & employee safety solutions
                 </p>
-                <p className="text-lg font-bold text-blue-600 mt-2">₹5L-50L/year</p>
+                <p className="text-lg font-bold text-blue-600 mt-2">₹1.5L-15L/year</p>
               </div>
               
               <div className="text-center p-4 bg-orange-50 rounded-lg">
@@ -202,7 +202,7 @@ const Revenue = () => {
                 <p className="text-sm text-gray-600 mt-1">
                   Ola, Uber, Rapido safety integration
                 </p>
-                <p className="text-lg font-bold text-orange-600 mt-2">₹2L-25L/month</p>
+                <p className="text-lg font-bold text-orange-600 mt-2">₹60K-8L/month</p>
               </div>
               
               <div className="text-center p-4 bg-purple-50 rounded-lg">
@@ -211,7 +211,7 @@ const Revenue = () => {
                 <p className="text-sm text-gray-600 mt-1">
                   Real-time data feeds & custom analytics
                 </p>
-                <p className="text-lg font-bold text-purple-600 mt-2">₹50K-10L/month</p>
+                <p className="text-lg font-bold text-purple-600 mt-2">₹15K-3L/month</p>
               </div>
             </div>
           </CardContent>
@@ -230,21 +230,21 @@ const Revenue = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-6 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Q1 2024 Target</h3>
-                <p className="text-3xl font-bold">₹25Cr</p>
+                <p className="text-3xl font-bold">₹80L</p>
                 <p className="text-sm opacity-90 mt-1">Jan - Mar 2024</p>
                 <p className="text-xs opacity-75 mt-1">Govt grants pipeline</p>
               </div>
               
               <div className="text-center p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Q2 2024 Target</h3>
-                <p className="text-3xl font-bold">₹30Cr</p>
+                <p className="text-3xl font-bold">₹95L</p>
                 <p className="text-sm opacity-90 mt-1">Apr - Jun 2024</p>
                 <p className="text-xs opacity-75 mt-1">Corporate expansion</p>
               </div>
               
               <div className="text-center p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Annual Target</h3>
-                <p className="text-3xl font-bold">₹120Cr</p>
+                <p className="text-3xl font-bold">₹3.6Cr</p>
                 <p className="text-sm opacity-90 mt-1">Full Year 2024</p>
                 <p className="text-xs opacity-75 mt-1">Multi-state deployment</p>
               </div>

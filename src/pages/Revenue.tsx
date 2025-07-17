@@ -54,12 +54,12 @@ const Revenue = () => {
   ];
 
   const projections = [
-    { month: 'Jan 2024', revenue: 2400000, target: 2300000 },
-    { month: 'Feb 2024', revenue: 2600000, target: 2500000 },
-    { month: 'Mar 2024', revenue: 2800000, target: 2700000 },
-    { month: 'Apr 2024', revenue: 3000000, target: 2900000 },
-    { month: 'May 2024', revenue: 3200000, target: 3100000 },
-    { month: 'Jun 2024', revenue: 3400000, target: 3300000 }
+    { month: 'Jan 2025', revenue: 2400000, target: 2300000 },
+    { month: 'Feb 2025', revenue: 2600000, target: 2500000 },
+    { month: 'Mar 2025', revenue: 2800000, target: 2700000 },
+    { month: 'Apr 2025', revenue: 3000000, target: 2900000 },
+    { month: 'May 2025', revenue: 3200000, target: 3100000 },
+    { month: 'Jun 2025', revenue: 3400000, target: 3300000 }
   ];
 
   const metrics = [
@@ -141,7 +141,7 @@ const Revenue = () => {
                 <TrendingUp className="h-5 w-5" />
                 <span>Monthly Projections</span>
               </CardTitle>
-              <CardDescription>Revenue vs targets for 2024</CardDescription>
+              <CardDescription>Revenue vs targets for 2025</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {projections.map((projection, index) => (
@@ -222,30 +222,30 @@ const Revenue = () => {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Calendar className="h-5 w-5" />
-              <span>12-Month Financial Projections</span>
+              <span>12-Month Financial Projections (2025-26)</span>
             </CardTitle>
             <CardDescription>Expected revenue growth and targets</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center p-6 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg">
-                <h3 className="text-lg font-semibold mb-2">Q1 2024 Target</h3>
+                <h3 className="text-lg font-semibold mb-2">Q1 2025 Target</h3>
                 <p className="text-3xl font-bold">₹80L</p>
-                <p className="text-sm opacity-90 mt-1">Jan - Mar 2024</p>
+                <p className="text-sm opacity-90 mt-1">Jan - Mar 2025</p>
                 <p className="text-xs opacity-75 mt-1">Govt grants pipeline</p>
               </div>
               
               <div className="text-center p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg">
-                <h3 className="text-lg font-semibold mb-2">Q2 2024 Target</h3>
+                <h3 className="text-lg font-semibold mb-2">Q2 2025 Target</h3>
                 <p className="text-3xl font-bold">₹95L</p>
-                <p className="text-sm opacity-90 mt-1">Apr - Jun 2024</p>
+                <p className="text-sm opacity-90 mt-1">Apr - Jun 2025</p>
                 <p className="text-xs opacity-75 mt-1">Corporate expansion</p>
               </div>
               
               <div className="text-center p-6 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Annual Target</h3>
                 <p className="text-3xl font-bold">₹3.6Cr</p>
-                <p className="text-sm opacity-90 mt-1">Full Year 2024</p>
+                <p className="text-sm opacity-90 mt-1">FY 2025-26</p>
                 <p className="text-xs opacity-75 mt-1">Multi-state deployment</p>
               </div>
             </div>

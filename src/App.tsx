@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 import Monitoring from "./pages/Monitoring";
 import Emergency from "./pages/Emergency";
 import Analytics from "./pages/Analytics";
+import Revenue from "./pages/Revenue";
 import Reports from "./pages/Reports";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
@@ -50,6 +51,7 @@ const App = () => {
               <Route path="/monitoring" element={<Monitoring />} />
               <Route path="/emergency" element={<Emergency />} />
               <Route path="/analytics" element={<Analytics />} />
+              <Route path="/revenue" element={<Revenue />} />
               <Route path="/reports" element={<Reports />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="*" element={<NotFound />} />

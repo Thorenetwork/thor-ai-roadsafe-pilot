@@ -7,7 +7,8 @@ import {
   Settings, 
   Brain,
   Map,
-  Activity
+  Activity,
+  DollarSign
 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -19,6 +20,7 @@ const Navigation = () => {
     { to: '/monitoring', icon: Map, label: t('liveMonitoring') },
     { to: '/emergency', icon: AlertTriangle, label: t('emergencyResponse') },
     { to: '/analytics', icon: Brain, label: t('analytics') },
+    { to: '/revenue', icon: DollarSign, label: 'Revenue Model' },
     { to: '/reports', icon: BarChart3, label: t('reports') },
     { to: '/settings', icon: Settings, label: t('settings') }
   ];

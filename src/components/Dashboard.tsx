@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Car, AlertTriangle, Shield, MapPin, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
+import {
+  Users,
+  AlertTriangle,
+  Gauge,
+  Leaf,
+  Target,
+  Clock,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+} from 'lucide-react';
 import MetricCard from './MetricCard';
-import WeatherPrediction from './WeatherPrediction';
+import DriverLeaderboard from './DriverLeaderboard';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Dashboard = () => {
@@ -65,31 +75,31 @@ const Dashboard = () => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <MetricCard
-              title={t('totalVehicles')}
-              value={language === "en" ? "2,847" : "२,८४७"}
-              change="+12%"
-              icon={Car}
+              title={t('safetyScore')}
+              value={language === 'en' ? '94.2%' : '९४.२%'}
+              change="+2.4%"
+              icon={Gauge}
               trend="up"
             />
             <MetricCard
-              title={t('activeDrivers')}
-              value={language === "en" ? "1,923" : "१,९२३"}
-              change="+8%"
+              title={t('totalVehicles')}
+              value={language === 'en' ? '1,280' : '१,२८०'}
+              change="+15%"
               icon={Users}
               trend="up"
             />
             <MetricCard
               title={t('safetyAlerts')}
-              value={language === "en" ? "156" : "१५६"}
-              change="-23%"
+              value={language === 'en' ? '48' : '४८'}
+              change="-27%"
               icon={AlertTriangle}
               trend="down"
             />
             <MetricCard
-              title={t('safetyScore')}
-              value={language === "en" ? "94.2%" : "९४.२%"}
-              change="+2.1%"
-              icon={Shield}
+              title={language === 'en' ? 'Eco efficiency' : 'ईको दक्षता'}
+              value={language === 'en' ? '88%' : '८८%'}
+              change="+4%"
+              icon={Leaf}
               trend="up"
             />
           </div>
@@ -97,110 +107,102 @@ const Dashboard = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                <MapPin className="h-5 w-5 text-blue-500 mr-2" />
-                {t('hotspots')}
+                <Target className="h-5 w-5 text-blue-500 mr-2" />
+                {language === 'en' ? 'Priority coaching topics' : 'प्राथमिक कोचिंग विषय'}
               </h3>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      {language === "en" ? "Mumbai - Pune Expressway" : "मुंबई - पुणे एक्सप्रेसवे"}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {language === "en" ? "18 incidents this week" : "या आठवड्यात १८ घटना"}
-                    </p>
+                {[
+                  {
+                    title: language === 'en' ? 'Speed anticipation' : 'गति पूर्वानुमान',
+                    detail:
+                      language === 'en'
+                        ? 'Baleno urban cycle · braking before zebra crossing'
+                        : 'बलेनो शहरी चक्र · ज़ेबरा क्रॉसिंग से पहले ब्रेकिंग',
+                    status: language === 'en' ? 'Coach today' : 'आज कोच करें',
+                    color: 'bg-blue-100 text-blue-700',
+                  },
+                  {
+                    title: language === 'en' ? 'Corner exit control' : 'कोने से बाहर नियंत्रण',
+                    detail:
+                      language === 'en'
+                        ? 'Swift highway loop · throttle smoothing'
+                        : 'स्विफ्ट हाईवे लूप · थ्रॉटल स्मूथिंग',
+                    status: language === 'en' ? 'In review' : 'समीक्षा में',
+                    color: 'bg-yellow-100 text-yellow-700',
+                  },
+                  {
+                    title: language === 'en' ? 'Idle fuel discipline' : 'इडल ईंधन अनुशासन',
+                    detail:
+                      language === 'en'
+                        ? 'Ertiga depot simulation · auto engine stop usage'
+                        : 'अर्टिगा डिपो सिमुलेशन · ऑटो इंजन स्टॉप उपयोग',
+                    status: language === 'en' ? 'Scheduled' : 'अनुसूचित',
+                    color: 'bg-green-100 text-green-700',
+                  },
+                ].map((topic) => (
+                  <div key={topic.title} className="p-4 border border-slate-100 rounded-lg">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-gray-900">{topic.title}</p>
+                        <p className="text-sm text-gray-600">{topic.detail}</p>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${topic.color}`}>
+                        {topic.status}
+                      </span>
+                    </div>
                   </div>
-                  <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {language === "en" ? "High Risk" : "उच्च धोका"}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      {language === "en" ? "Delhi - Gurgaon Highway" : "दिल्ली - गुड़गांव हायवे"}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {language === "en" ? "12 incidents this week" : "या आठवड्यात १२ घटना"}
-                    </p>
-                  </div>
-                  <span className="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {language === "en" ? "Medium Risk" : "मध्यम धोका"}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between p-3 bg-orange-50 rounded-lg">
-                  <div>
-                    <p className="font-medium text-gray-900">
-                      {language === "en" ? "Bangalore Outer Ring Road" : "बंगळूर आऊटर रिंग रोड"}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      {language === "en" ? "9 incidents this week" : "या आठवड्यात ९ घटना"}
-                    </p>
-                  </div>
-                  <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
-                    {language === "en" ? "Medium Risk" : "मध्यम धोका"}
-                  </span>
-                </div>
+                ))}
               </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                 <Clock className="h-5 w-5 text-green-500 mr-2" />
-                {t('activities')}
+                {language === 'en' ? 'Simulation event log' : 'सिमुलेशन इवेंट लॉग'}
               </h3>
               <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm text-gray-900">
-                      {language === "en" 
-                        ? "AI model detected 12 potential hazards" 
-                        : "AI मॉडेलने १२ संभाव्य धोक्यांचा शोध लावला"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {language === "en" ? "5 minutes ago" : "५ मिनिटांपूर्वी"}
-                    </p>
+                {[
+                  {
+                    message:
+                      language === 'en'
+                        ? 'Driver A102 accepted AI lane change recommendation'
+                        : 'ड्राइवर A102 ने एआई लेन परिवर्तन अनुशंसा स्वीकार की',
+                    time: language === 'en' ? '5 minutes ago' : '५ मिनट पहले',
+                    indicator: 'bg-green-500',
+                  },
+                  {
+                    message:
+                      language === 'en'
+                        ? 'Swift diesel: harsh braking detected · auto tag added'
+                        : 'स्विफ्ट डीज़ल: कठोर ब्रेकिंग का पता चला · ऑटो टैग जोड़ा गया',
+                    time: language === 'en' ? '18 minutes ago' : '१८ मिनट पहले',
+                    indicator: 'bg-blue-500',
+                  },
+                  {
+                    message:
+                      language === 'en'
+                        ? 'Coaching clip generated for Urban Loop Batch 07'
+                        : 'अर्बन लूप बैच ०७ के लिए कोचिंग क्लिप तैयार की गई',
+                    time: language === 'en' ? '45 minutes ago' : '४५ मिनट पहले',
+                    indicator: 'bg-yellow-500',
+                  },
+                  {
+                    message:
+                      language === 'en'
+                        ? 'Simulation exported to driver mobile companion app'
+                        : 'सिमुलेशन ड्राइवर मोबाइल साथी ऐप पर निर्यात किया गया',
+                    time: language === 'en' ? '1 hour ago' : '१ घंटा पहले',
+                    indicator: 'bg-purple-500',
+                  },
+                ].map((entry) => (
+                  <div key={entry.message} className="flex items-start space-x-3">
+                    <div className={`w-2 h-2 rounded-full mt-2 ${entry.indicator}`}></div>
+                    <div>
+                      <p className="text-sm text-gray-900">{entry.message}</p>
+                      <p className="text-xs text-gray-500">{entry.time}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm text-gray-900">
-                      {language === "en"
-                        ? "Traffic pattern updated in Mumbai"
-                        : "मुंबईमध्ये ट्रॅफिक पॅटर्न अपडेट केले"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {language === "en" ? "15 minutes ago" : "१५ मिनिटांपूर्वी"}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm text-gray-900">
-                      {language === "en"
-                        ? "Weather alert issued in Pune"
-                        : "पुण्यात हवामान चेतावणी जारी"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {language === "en" ? "1 hour ago" : "१ तासापूर्वी"}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-purple-500 rounded-full mt-2"></div>
-                  <div>
-                    <p className="text-sm text-gray-900">
-                      {language === "en"
-                        ? "Weekly safety report prepared"
-                        : "साप्ताहिक सुरक्षा अहवाल तयार"}
-                    </p>
-                    <p className="text-xs text-gray-500">
-                      {language === "en" ? "2 hours ago" : "२ तासांपूर्वी"}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -210,39 +212,38 @@ const Dashboard = () => {
       {/* Page 1: AI Safety Insights */}
       {currentPage === 1 && (
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
-          <h3 className="text-lg font-semibold text-gray-900 mb-2">
-            {language === "en"
-              ? "AI Safety Insights"
-              : "AI सुरक्षा अंतर्दृष्टी"}
+          <h3 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-indigo-500" />
+            {language === 'en' ? 'AI simulation insights' : 'एआई सिमुलेशन अंतर्दृष्टि'}
           </h3>
           <p className="text-gray-700 mb-4">
-            {language === "en"
-              ? "Our AI model predicted and averted 127 potential accidents this week with 94% accuracy. Highest risk period observed between 6-8PM in Mumbai-Pune area."
-              : "आमच्या AI मॉडेलने या आठवड्यात ९४% अचूकतेसह १२७ संभाव्य अपघातांची भविष्यवाणी केली आणि टाळली. मुंबई-पुणे क्षेत्रात संध्याकाळी ६-८ दरम्यान सर्वाधिक धोका दिसून आला."}
+            {language === 'en'
+              ? 'Digital twins of Maruti routes highlight the evening congestion window between 6–8 PM. Updated model suppresses harsh braking by 23% while preserving arrival times.'
+              : 'मारुति मार्ग के डिजिटल ट्विन शाम ६–८ बजे की भीड़भाड़ अवधि को दर्शाते हैं। अद्यतन मॉडल आगमन समय बरकरार रखते हुए कठोर ब्रेकिंग को २३% तक घटाता है।'}
           </p>
           <div className="flex flex-wrap gap-4">
             <div className="bg-white rounded-lg p-3 border border-blue-200">
               <p className="text-sm text-gray-600">
-                {language === "en" ? "Average response time" : "सरासरी प्रतिसाद वेळ"}
+                {language === 'en' ? 'Average lap variance' : 'औसत लैप विचलन'}
               </p>
               <p className="text-xl font-bold text-blue-600">
-                {language === "en" ? "3.2 Minutes" : "३.२ मिनिटे"}
+                {language === 'en' ? '±4.2%' : '±४.२%'}
               </p>
             </div>
             <div className="bg-white rounded-lg p-3 border border-blue-200">
               <p className="text-sm text-gray-600">
-                {language === "en" ? "Accidents averted" : "टाळलेले अपघात"}
+                {language === 'en' ? 'Coaching clips generated' : 'तैयार कोचिंग क्लिप्स'}
               </p>
               <p className="text-xl font-bold text-green-600">
-                {language === "en" ? "127" : "१२७"}
+                {language === 'en' ? '312' : '३१२'}
               </p>
             </div>
             <div className="bg-white rounded-lg p-3 border border-blue-200">
               <p className="text-sm text-gray-600">
-                {language === "en" ? "AI accuracy" : "AI अचूकता"}
+                {language === 'en' ? 'Prediction accuracy' : 'भविष्यवाणी सटीकता'}
               </p>
               <p className="text-xl font-bold text-purple-600">
-                {language === "en" ? "94%" : "९४%"}
+                {language === 'en' ? '96%' : '९६%'}
               </p>
             </div>
           </div>
@@ -254,63 +255,63 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              {language === "en" ? "Weekly Performance" : "साप्ताहिक कामगिरी"}
+              {language === 'en' ? 'Driver score breakdown' : 'ड्राइवर स्कोर विवरण'}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Total Distance Covered" : "एकूण अंतर"}
+                  {language === 'en' ? 'City cycle mastery' : 'शहरी चक्र दक्षता'}
                 </span>
                 <span className="font-semibold">
-                  {language === "en" ? "2.4M km" : "२.४ लाख किमी"}
+                  {language === 'en' ? '92%' : '९२%'}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Fuel Efficiency" : "इंधन कार्यक्षमता"}
+                  {language === 'en' ? 'Highway smoothness' : 'हाईवे स्मूदनेस'}
                 </span>
                 <span className="font-semibold">
-                  {language === "en" ? "12.5 kmpl" : "१२.५ किमी/लिटर"}
+                  {language === 'en' ? '89%' : '८९%'}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Driver Performance" : "चालक कामगिरी"}
+                  {language === 'en' ? 'Eco shift adherence' : 'ईको शिफ्ट अनुशासन'}
                 </span>
                 <span className="font-semibold text-green-600">
-                  {language === "en" ? "Excellent" : "उत्कृष्ट"}
+                  {language === 'en' ? 'High' : 'उच्च'}
                 </span>
               </div>
             </div>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-lg p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">
-              {language === "en" ? "Safety Metrics" : "सुरक्षा मेट्रिक्स"}
+              {language === 'en' ? 'Risk signals' : 'जोखिम संकेत'}
             </h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Near Miss Events" : "जवळपास चुकणारी घटना"}
+                  {language === 'en' ? 'Harsh braking events' : 'कठोर ब्रेकिंग घटनाएं'}
                 </span>
                 <span className="font-semibold text-yellow-600">
-                  {language === "en" ? "23" : "२३"}
+                  {language === 'en' ? '18 (-6)' : '१८ (−६)'}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Speed Violations" : "वेग उल्लंघन"}
+                  {language === 'en' ? 'Speed variance alerts' : 'गति विचलन अलर्ट'}
                 </span>
                 <span className="font-semibold text-red-600">
-                  {language === "en" ? "8" : "८"}
+                  {language === 'en' ? '12 (-3)' : '१२ (−३)'}
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-gray-600">
-                  {language === "en" ? "Safe Driving Score" : "सुरक्षित ड्रायव्हिंग स्कोअर"}
+                  {language === 'en' ? 'Driver focus flags' : 'ड्राइवर फोकस संकेत'}
                 </span>
                 <span className="font-semibold text-green-600">
-                  {language === "en" ? "94/100" : "९४/१००"}
+                  {language === 'en' ? '42 (-11)' : '४२ (−११)'}
                 </span>
               </div>
             </div>
@@ -320,7 +321,7 @@ const Dashboard = () => {
 
       {/* Page 3: Weather Prediction */}
       {currentPage === 3 && (
-        <WeatherPrediction />
+        <DriverLeaderboard />
       )}
 
       {/* Auto-advance indicator */}

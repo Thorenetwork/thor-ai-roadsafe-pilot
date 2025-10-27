@@ -29,13 +29,13 @@ const Navigation = () => {
     <nav className="bg-slate-900 text-white h-screen w-64 fixed left-0 top-0 z-50 shadow-2xl">
       <div className="p-6 border-b border-slate-700">
         <div className="flex items-center space-x-3">
-          <img 
-            src="/lovable-uploads/48d4d164-3bff-4b69-92eb-bc2968eb582b.png" 
-            alt="Thore Network Logo" 
+          <img
+            src="/lovable-uploads/48d4d164-3bff-4b69-92eb-bc2968eb582b.png"
+            alt="Thore Network Logo"
             className="h-8 w-auto"
           />
           <div>
-            <h1 className="text-xl font-bold">Thore Network</h1>
+            <h1 className="text-xl font-bold">{t('welcomeTitle')}</h1>
             <p className="text-sm text-slate-400">{t('welcomeSubtitle')}</p>
           </div>
         </div>

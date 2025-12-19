@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 import MetricCard from './MetricCard';
 import DriverLeaderboard from './DriverLeaderboard';
+import SatelliteTollMap from './SatelliteTollMap';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const Dashboard = () => {
@@ -494,6 +495,9 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
+
+          {/* Satellite Toll Map */}
+          <SatelliteTollMap />
         </div>
       )}
 

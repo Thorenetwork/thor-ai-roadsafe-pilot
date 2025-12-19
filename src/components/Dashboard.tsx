@@ -9,6 +9,11 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
+  Satellite,
+  Car,
+  ScanLine,
+  Zap,
+  CheckCircle,
 } from 'lucide-react';
 import MetricCard from './MetricCard';
 import DriverLeaderboard from './DriverLeaderboard';
@@ -17,7 +22,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 const Dashboard = () => {
   const { t, language } = useLanguage();
   const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = 4;
+  const totalPages = 5;
 
   // Auto-advance pages every 3.5 minutes
   useEffect(() => {
@@ -319,9 +324,177 @@ const Dashboard = () => {
         </div>
       )}
 
-      {/* Page 3: Weather Prediction */}
+      {/* Page 3: Driver Leaderboard */}
       {currentPage === 3 && (
         <DriverLeaderboard />
+      )}
+
+      {/* Page 4: Satellite Toll Collection System */}
+      {currentPage === 4 && (
+        <div className="space-y-6">
+          <div className="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 rounded-2xl p-8 text-white relative overflow-hidden">
+            {/* Background decorations */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-white/20 p-3 rounded-xl">
+                  <Satellite className="h-8 w-8" />
+                </div>
+                <div>
+                  <span className="bg-yellow-400 text-yellow-900 text-xs font-bold px-3 py-1 rounded-full">
+                    {language === 'en' ? '100% IMPLEMENTATION BY 2026' : '२०२६ तक १००% कार्यान्वयन'}
+                  </span>
+                </div>
+              </div>
+              
+              <h2 className="text-3xl font-bold mb-2">
+                {language === 'en' 
+                  ? 'Satellite-Based Toll Collection System' 
+                  : 'उपग्रह-आधारित टोल संग्रह प्रणाली'}
+              </h2>
+              <p className="text-lg text-white/90 mb-6 max-w-2xl">
+                {language === 'en'
+                  ? 'Revolutionary toll-free travel across national highways – no stopping, no queues, complete automation.'
+                  : 'राष्ट्रीय राजमार्गों पर क्रांतिकारी टोल-मुक्त यात्रा – कोई रुकावट नहीं, कोई कतार नहीं, पूर्ण स्वचालन।'}
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {[
+                  {
+                    icon: Satellite,
+                    title: language === 'en' ? 'Satellite Tracking' : 'उपग्रह ट्रैकिंग',
+                    desc: language === 'en' ? 'GPS-based vehicle monitoring' : 'GPS-आधारित वाहन निगरानी',
+                  },
+                  {
+                    icon: Sparkles,
+                    title: language === 'en' ? 'AI Processing' : 'एआई प्रसंस्करण',
+                    desc: language === 'en' ? 'Intelligent toll calculation' : 'बुद्धिमान टोल गणना',
+                  },
+                  {
+                    icon: ScanLine,
+                    title: language === 'en' ? 'Number Plate Recognition' : 'नंबर प्लेट पहचान',
+                    desc: language === 'en' ? 'ANPR technology integration' : 'एएनपीआर तकनीक एकीकरण',
+                  },
+                  {
+                    icon: Zap,
+                    title: language === 'en' ? 'FASTag Integration' : 'फास्टैग एकीकरण',
+                    desc: language === 'en' ? 'Automatic deduction' : 'स्वचालित कटौती',
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20">
+                    <item.icon className="h-6 w-6 mb-2 text-yellow-300" />
+                    <h4 className="font-semibold">{item.title}</h4>
+                    <p className="text-sm text-white/80">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <CheckCircle className="h-5 w-5 text-emerald-500" />
+                {language === 'en' ? 'Key Benefits' : 'प्रमुख लाभ'}
+              </h3>
+              <div className="space-y-4">
+                {[
+                  {
+                    title: language === 'en' ? 'Elimination of Toll Booths' : 'टोल बूथों का उन्मूलन',
+                    desc: language === 'en' 
+                      ? 'Complete removal of physical toll plazas across national highways'
+                      : 'राष्ट्रीय राजमार्गों पर भौतिक टोल प्लाजा का पूर्ण उन्मूलन',
+                  },
+                  {
+                    title: language === 'en' ? 'Seamless Travel' : 'निर्बाध यात्रा',
+                    desc: language === 'en'
+                      ? 'Vehicles no longer need to stop or queue at toll plazas'
+                      : 'वाहनों को अब टोल प्लाजा पर रुकने या कतार में लगने की जरूरत नहीं',
+                  },
+                  {
+                    title: language === 'en' ? 'Reduced Congestion' : 'भीड़भाड़ में कमी',
+                    desc: language === 'en'
+                      ? 'Significant reduction in highway traffic bottlenecks'
+                      : 'राजमार्ग यातायात बाधाओं में महत्वपूर्ण कमी',
+                  },
+                  {
+                    title: language === 'en' ? 'Automatic Deduction' : 'स्वचालित कटौती',
+                    desc: language === 'en'
+                      ? 'Toll charges deducted automatically via AI and FASTag'
+                      : 'एआई और फास्टैग के माध्यम से टोल शुल्क स्वचालित रूप से कटता है',
+                  },
+                ].map((benefit) => (
+                  <div key={benefit.title} className="flex items-start gap-3 p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2"></div>
+                    <div>
+                      <p className="font-semibold text-gray-900">{benefit.title}</p>
+                      <p className="text-sm text-gray-600">{benefit.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <Car className="h-5 w-5 text-blue-500" />
+                {language === 'en' ? 'Implementation Timeline' : 'कार्यान्वयन समयरेखा'}
+              </h3>
+              <div className="space-y-4">
+                <div className="relative">
+                  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-teal-500 to-emerald-500"></div>
+                  {[
+                    { 
+                      phase: language === 'en' ? 'Phase 1' : 'चरण 1', 
+                      period: language === 'en' ? 'Q1 2025' : 'Q1 २०२५',
+                      desc: language === 'en' ? 'Pilot on select highways' : 'चुनिंदा राजमार्गों पर पायलट',
+                      status: 'completed'
+                    },
+                    { 
+                      phase: language === 'en' ? 'Phase 2' : 'चरण 2', 
+                      period: language === 'en' ? 'Q3 2025' : 'Q3 २०२५',
+                      desc: language === 'en' ? 'Major corridor expansion' : 'प्रमुख गलियारा विस्तार',
+                      status: 'in-progress'
+                    },
+                    { 
+                      phase: language === 'en' ? 'Phase 3' : 'चरण 3', 
+                      period: language === 'en' ? 'Q1 2026' : 'Q1 २०२६',
+                      desc: language === 'en' ? 'Pan-India rollout' : 'पूरे भारत में लागू',
+                      status: 'upcoming'
+                    },
+                    { 
+                      phase: language === 'en' ? 'Phase 4' : 'चरण 4', 
+                      period: language === 'en' ? 'End of 2026' : '२०२६ के अंत तक',
+                      desc: language === 'en' ? '100% Implementation' : '१००% कार्यान्वयन',
+                      status: 'upcoming'
+                    },
+                  ].map((item, index) => (
+                    <div key={item.phase} className="relative pl-10 pb-4">
+                      <div className={`absolute left-2.5 w-3 h-3 rounded-full border-2 ${
+                        item.status === 'completed' ? 'bg-emerald-500 border-emerald-500' :
+                        item.status === 'in-progress' ? 'bg-blue-500 border-blue-500 animate-pulse' :
+                        'bg-white border-gray-300'
+                      }`}></div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-semibold text-gray-900">{item.phase}</span>
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${
+                          item.status === 'completed' ? 'bg-emerald-100 text-emerald-700' :
+                          item.status === 'in-progress' ? 'bg-blue-100 text-blue-700' :
+                          'bg-gray-100 text-gray-600'
+                        }`}>
+                          {item.period}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Auto-advance indicator */}
